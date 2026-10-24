@@ -73,6 +73,19 @@ if (base) {
 }
 
 for (const a of avertissements) console.warn('⚠ ' + a);
+
+// Sur GitHub : messages affichés directement sur la pull request (annotations + résumé)
+if (process.env.GITHUB_ACTIONS) {
+  const { appendFile } = await import('node:fs/promises');
+  for (const p of problemes) console.log(`::error title=Vérification du site::${p.replace(/\n/g, ' ')}`);
+  if (process.env.GITHUB_STEP_SUMMARY) {
+    const resume = problemes.length
+      ? `## ✗ ${problemes.length} problème(s) à corriger\n\n${problemes.map((p) => `- ${p}`).join('\n')}\n`
+      : '## ✓ Vérifications OK\n';
+    await appendFile(process.env.GITHUB_STEP_SUMMARY, resume);
+  }
+}
+
 if (problemes.length) {
   console.error(`\n✗ ${problemes.length} problème(s) à corriger :\n`);
   for (const p of problemes) console.error('  - ' + p);
