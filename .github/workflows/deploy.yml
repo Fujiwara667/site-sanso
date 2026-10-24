@@ -9,6 +9,7 @@ on:
   push:
     branches: [main]
   pull_request:
+    types: [opened, synchronize, reopened, labeled, unlabeled]
   workflow_dispatch:
 
 concurrency:
@@ -20,6 +21,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0 # historique complet : permet de comparer avec main
 
       - uses: actions/setup-node@v7
         with:
@@ -31,6 +34,13 @@ jobs:
 
       - name: Construire le site
         run: npm run build
+
+      # Garde-fous : boîte photos vide, poids des images, aucune ressource externe,
+      # liens internes, fichiers techniques (étiquette « technique » requise)
+      - name: Vérifier
+        run: npm run verifier
+        env:
+          AUTORISER_TECHNIQUE: ${{ contains(github.event.pull_request.labels.*.name, 'technique') }}
 
       # Fichier de configuration du formulaire, créé à partir des secrets (jamais dans le dépôt)
       - name: Configurer le formulaire de contact

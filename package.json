@@ -6,7 +6,9 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "check": "astro check"
+    "check": "astro check",
+    "photos": "node scripts/photos.mjs",
+    "verifier": "node scripts/verifier.mjs"
   },
   "dependencies": {
     "astro": "7.4.2",
