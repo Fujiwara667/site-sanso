@@ -2,30 +2,16 @@
 
 Site vitrine de SANSO Concept — www.sanso-concept.ch
 
-## Modifier le site (pour Nicolas)
+## Modifier le site
 
-Tu n'as rien à installer. Tout se fait dans le navigateur avec ChatGPT (Codex).
-
-1. Va sur **chatgpt.com/codex** et connecte-toi avec ton compte ChatGPT.
-2. Choisis le dépôt **site-sanso**.
-3. Écris ta demande en français, comme à une personne. Exemples :
-   - « Ajoute un projet : chalet à Chexbres, construction bois, voici la photo et le texte… »
-   - « Change le numéro de téléphone en +41 … »
-   - « Sur la page Étude bois, remplace la phrase d'introduction par : … »
-   - « Agrandis un peu les titres des projets sur mobile. »
-   - « Supprime les projets d'exemple. »
-4. Codex prépare la modification. Relis-la, puis clique sur **Créer une pull request** (« Create PR »).
-5. Sur GitHub, ouvre la pull request :
-   - attends la coche verte ✔ (le site se construit sans erreur) ;
-   - clique sur le lien **Deploy Preview** (Netlify) pour voir le résultat avant publication ;
-   - clique sur **Merge** (Fusionner). Le site est en ligne 1 à 2 minutes plus tard.
-6. Un problème ? Dans la pull request fusionnée, clique sur **Revert** : tout revient comme avant.
-
-Règle d'or : une demande = une pull request. Pas de grosse refonte en une fois.
+Voir **[GUIDE.md](GUIDE.md)** (circuit : demander → aperçu → corriger → publier, avec ChatGPT, Claude ou un autre agent).
 
 ## Pour le développeur
 
-- Instructions pour les agents IA : `AGENTS.md` (Codex) et `CLAUDE.md` (Claude Code).
+- Instructions pour les agents IA : `AGENTS.md` (Codex et autres) et `CLAUDE.md` (Claude Code, renvoie à AGENTS.md).
+- Garde-fous : `npm run verifier` (lancé sur chaque pull request). Les fichiers techniques ne passent qu'avec l'étiquette **technique** sur la pull request.
+- Photos : boîte de dépôt `a-integrer/` + `npm run photos`.
+- Protection de `main` : ruleset `protection-main` (pull request + contrôle `build` obligatoires, bypass administrateur).
 - `npm install` puis `npm run dev` (Node 24 recommandé, 22.23+ minimum).
 
 ### Hébergement de test (actuel) : Netlify

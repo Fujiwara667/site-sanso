@@ -1,0 +1,27 @@
+name: Demande de modification du site
+description: Décrire une modification à faire sur le site (texte, photo, projet, mise en page)
+title: "Modification : "
+body:
+  - type: dropdown
+    id: page
+    attributes:
+      label: Page concernée
+      options:
+        - Accueil
+        - Construction bois
+        - Étude bois
+        - Protection incendie
+        - Projets
+        - À propos
+        - Contact
+        - Mentions légales / Confidentialité
+        - Tout le site
+    validations:
+      required: true
+  - type: textarea
+    id: demande
+    attributes:
+      label: Ce que vous voulez changer
+      description: Le plus précis possible (texte exact à remplacer, nouveau texte, etc.). Vous pouvez glisser des photos ici.
+    validations:
+      required: true
