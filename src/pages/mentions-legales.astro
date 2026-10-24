@@ -3,15 +3,29 @@
 import Base from '../layouts/Base.astro';
 import e from '../data/entreprise.json';
 ---
+
 <Base titre="Mentions légales">
   <section class="wrap legal">
     <h1>Mentions légales.</h1>
     <h2>Éditeur</h2>
-    <p>{e.raisonSociale}<br />{e.adresse}, {e.npa} {e.localite}<br />IDE : {e.ide}<br />{e.email}<br />{e.telephone}</p>
+    <p>
+      {e.raisonSociale}
+      <br />
+      {e.adresse}, {e.npa} {e.localite}
+      <br />
+      IDE : {e.ide}
+      <br />
+      {e.email}
+      <br />
+      {e.telephone}
+    </p>
     <p>Responsable du contenu : {e.responsable}.</p>
     <h2>Hébergement</h2>
     <p>Infomaniak Network SA, Rue Eugène-Marziano 25, 1227 Les Acacias (GE), Suisse.</p>
     <h2>Contenus et illustrations</h2>
-    <p>Les photographies et le logo sont fournis par {e.nom}. Les projets identifiés comme exemples sont des présentations illustratives et ne constituent pas des références de mandats.</p>
+    <p>
+      Les photographies et le logo sont fournis par {e.nom}. Les projets identifiés comme exemples sont des
+      présentations illustratives et ne constituent pas des références de mandats.
+    </p>
   </section>
 </Base>

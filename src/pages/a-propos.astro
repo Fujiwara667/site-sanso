@@ -6,22 +6,49 @@ import Cta from '../components/Cta.astro';
 import photo from '../assets/photos/a-propos.webp';
 import entreprise from '../data/entreprise.json';
 ---
+
 <Base titre="À propos">
   <section class="wrap page-title">
     <p class="eyebrow">04 / SANSO CONCEPT</p>
-    <h1>Une idée précise<br />du travail bien fait.</h1>
+    <h1>
+      Une idée précise
+      <br />
+      du travail bien fait.
+    </h1>
   </section>
   <div class="about-photo">
-    <Image src={photo} alt="Assemblages et structure en bois d’un ouvrage extérieur" widths={[800, 1400, 1920]} quality={70} sizes="100vw" />
+    <Image
+      src={photo}
+      alt="Assemblages et structure en bois d’un ouvrage extérieur"
+      widths={[800, 1400, 1920]}
+      quality={70}
+      sizes="100vw"
+    />
   </div>
   <section class="wrap about-text">
-    <h2><span>Le sens du détail.<br /></span><span>La réalité du terrain.<br /></span></h2>
-    <p>SANSO Concept réunit l’étude et la construction au sein d’une même structure. Nous accompagnons les maîtres d’ouvrage, les architectes et les entreprises dans leurs projets de construction, de transformation et de rénovation en Suisse romande.</p>
+    <h2>
+      <span>
+        Le sens du détail.
+        <br />
+      </span>
+      <span>
+        La réalité du terrain.
+        <br />
+      </span>
+    </h2>
+    <p>
+      SANSO Concept réunit l’étude et la construction au sein d’une même structure. Nous accompagnons les maîtres
+      d’ouvrage, les architectes et les entreprises dans leurs projets de construction, de transformation et de
+      rénovation en Suisse romande.
+    </p>
   </section>
   <section class="peach">
     <div class="wrap about-text">
       <h2>Notre approche.</h2>
-      <p>Nous pensons les projets avec leur mise en œuvre. Les choix de structure, les détails et les interfaces sont étudiés pour apporter des réponses concrètes aux contraintes du bâtiment et du chantier.</p>
+      <p>
+        Nous pensons les projets avec leur mise en œuvre. Les choix de structure, les détails et les interfaces sont
+        étudiés pour apporter des réponses concrètes aux contraintes du bâtiment et du chantier.
+      </p>
     </div>
   </section>
   <section class="wrap person">
@@ -33,7 +60,9 @@ import entreprise from '../data/entreprise.json';
     <div>
       <p class="qualifications">Technicien ES en construction bois{'\n'}Spécialiste en protection incendie AEAI</p>
       <p>Un échange direct, une lecture technique du projet et une attention constante à sa réalisation.</p>
-      <a class="text-link" href="/contact/">Échangeons sur votre projet <span aria-hidden="true">↗</span></a>
+      <a class="text-link" href="/contact/">
+        Échangeons sur votre projet <span aria-hidden="true">↗</span>
+      </a>
     </div>
   </section>
   <Cta />

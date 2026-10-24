@@ -1,0 +1,19 @@
+# Mises à jour proposées automatiquement (une pull request groupée par mois).
+# Elles modifient des fichiers techniques : vérifier l'aperçu, ajouter l'étiquette « technique », puis fusionner.
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: monthly
+    groups:
+      dependances:
+        patterns: ['*']
+        update-types: [minor, patch]
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
+    groups:
+      actions:
+        patterns: ['*']

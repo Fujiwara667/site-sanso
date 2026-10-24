@@ -32,6 +32,9 @@ jobs:
       - name: Installer
         run: npm ci
 
+      - name: Contrôler le code (types, composants)
+        run: npm run check
+
       - name: Construire le site
         run: npm run build
 

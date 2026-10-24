@@ -22,7 +22,11 @@ const nomPropre = (nom) =>
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/^-+|-+$/g, '') || 'photo';
 
-const existe = (f) => access(f).then(() => true, () => false);
+const existe = (f) =>
+  access(f).then(
+    () => true,
+    () => false,
+  );
 
 const fichiers = (await readdir(BOITE)).filter((f) => !f.startsWith('.') && f !== 'LISEZ-MOI.md');
 if (fichiers.length === 0) {

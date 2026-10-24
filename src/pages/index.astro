@@ -13,26 +13,51 @@ const projets = (await getCollection('projets'))
   .sort((a, b) => a.data.ordre - b.data.ordre);
 
 const metiers = [
-  { href: '/construction-bois/', titre: 'Construction bois', texte: 'Construire avec le bois. Transformer avec justesse.' },
+  {
+    href: '/construction-bois/',
+    titre: 'Construction bois',
+    texte: 'Construire avec le bois. Transformer avec justesse.',
+  },
   { href: '/etude-bois/', titre: 'Étude bois', texte: 'Le projet se construit avant le chantier.' },
-  { href: '/protection-incendie/', titre: 'Protection incendie', texte: 'Anticiper les exigences. Accompagner le projet.' },
+  {
+    href: '/protection-incendie/',
+    titre: 'Protection incendie',
+    texte: 'Anticiper les exigences. Accompagner le projet.',
+  },
 ];
 ---
+
 <Base titre="Étudier. Construire.">
   <section class="home-hero">
     <div class="hero-top wrap">
       <div>
         <p class="eyebrow">BOIS / ÉTUDE / PROTECTION INCENDIE</p>
-        <h1><span>Étudier.</span><span>Construire.</span></h1>
+        <h1>
+          <span>Étudier.</span>
+          <span>Construire.</span>
+        </h1>
       </div>
       <div class="hero-note">
         <span class="cross">+</span>
-        <p>Construction bois, étude technique et protection incendie. À Puidoux, nous relions la réflexion du bureau à la réalité du chantier.</p>
-        <a class="text-link" href="/contact/">Votre projet commence ici <span aria-hidden="true">↗</span></a>
+        <p>
+          Construction bois, étude technique et protection incendie. À Puidoux, nous relions la réflexion du bureau à la
+          réalité du chantier.
+        </p>
+        <a class="text-link" href="/contact/">
+          Votre projet commence ici <span aria-hidden="true">↗</span>
+        </a>
       </div>
     </div>
     <div class="hero-photo">
-      <Image src={photoHero} alt="Levage d’un élément de construction bois sur un chantier au-dessus du Léman" widths={[800, 1400, 1920]} quality={70} sizes="100vw" loading="eager" fetchpriority="high" />
+      <Image
+        src={photoHero}
+        alt="Levage d’un élément de construction bois sur un chantier au-dessus du Léman"
+        widths={[800, 1400, 1920]}
+        quality={70}
+        sizes="100vw"
+        loading="eager"
+        fetchpriority="high"
+      />
       <div class="photo-caption">
         <span>DE LA CONCEPTION À LA RÉALISATION</span>
         <span>PUIDOUX / SUISSE ROMANDE</span>
@@ -44,13 +69,20 @@ const metiers = [
     <div class="section-heading">
       <div>
         <p class="eyebrow">01 / NOS COMPÉTENCES</p>
-        <h2>Trois métiers.<br />Un même regard.</h2>
+        <h2>
+          Trois métiers.
+          <br />
+          Un même regard.
+        </h2>
       </div>
     </div>
     <div class="services-grid">
       {metiers.map((m, i) => (
         <a class="service-card" href={m.href}>
-          <div class="card-top"><span class="eyebrow">0{i + 1}</span><span aria-hidden="true">↗</span></div>
+          <div class="card-top">
+            <span class="eyebrow">0{i + 1}</span>
+            <span aria-hidden="true">↗</span>
+          </div>
           <h3>{m.titre}</h3>
           <p>{m.texte}</p>
           <span class="text-link">Découvrir notre approche →</span>
@@ -66,11 +98,18 @@ const metiers = [
         <h2>Du premier trait au dernier assemblage.</h2>
       </div>
       <div>
-        <p>Nous pensons les projets avec leur mise en œuvre. Les choix de structure, les détails et les interfaces sont étudiés pour apporter des réponses concrètes aux contraintes du bâtiment et du chantier.</p>
-        <a class="text-link" href="/a-propos/">À propos de SANSO <span aria-hidden="true">↗</span></a>
+        <p>
+          Nous pensons les projets avec leur mise en œuvre. Les choix de structure, les détails et les interfaces sont
+          étudiés pour apporter des réponses concrètes aux contraintes du bâtiment et du chantier.
+        </p>
+        <a class="text-link" href="/a-propos/">
+          À propos de SANSO <span aria-hidden="true">↗</span>
+        </a>
       </div>
     </div>
-    <div class="approach-word" aria-hidden="true">SAVOIR. FAIRE.</div>
+    <div class="approach-word" aria-hidden="true">
+      SAVOIR. FAIRE.
+    </div>
   </section>
 
   <section class="wrap selected">
@@ -79,10 +118,14 @@ const metiers = [
         <p class="eyebrow">02 / SUR LE TERRAIN</p>
         <h2>Le bois, en pratique.</h2>
       </div>
-      <a class="text-link" href="/projets/">Tous les projets <span aria-hidden="true">↗</span></a>
+      <a class="text-link" href="/projets/">
+        Tous les projets <span aria-hidden="true">↗</span>
+      </a>
     </div>
     <div class="project-list">
-      {projets.map((p, i) => <ProjetCarte projet={p} numero={i + 1} />)}
+      {projets.map((p, i) => (
+        <ProjetCarte projet={p} numero={i + 1} />
+      ))}
     </div>
   </section>
 

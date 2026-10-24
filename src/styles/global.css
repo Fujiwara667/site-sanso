@@ -5,25 +5,25 @@
 */
 @font-face {
   font-family: Aptos;
-  src: url(/fonts/aptos.ttf) format("truetype");
+  src: url(/fonts/aptos.ttf) format('truetype');
   font-weight: 400;
   font-display: swap;
 }
 @font-face {
   font-family: Aptos;
-  src: url(/fonts/aptos-bold.ttf) format("truetype");
+  src: url(/fonts/aptos-bold.ttf) format('truetype');
   font-weight: 700;
   font-display: swap;
 }
 @font-face {
   font-family: AptosDisplay;
-  src: url(/fonts/aptos-display.ttf) format("truetype");
+  src: url(/fonts/aptos-display.ttf) format('truetype');
   font-weight: 700;
   font-display: swap;
 }
 @font-face {
   font-family: Cascadia;
-  src: url(/fonts/cascadia.ttf) format("truetype");
+  src: url(/fonts/cascadia.ttf) format('truetype');
   font-weight: 400;
   font-display: swap;
 }
@@ -75,8 +75,7 @@ button {
   background: 0 0;
   border: 0;
 }
-:is(a:focus-visible,
-button:focus-visible) {
+:is(a:focus-visible, button:focus-visible) {
   outline: 2px solid var(--coal);
   outline-offset: 6px;
 }
@@ -183,7 +182,7 @@ a:hover .text-link,
   padding: 15px 0;
 }
 .desktop-nav a:hover,
-.desktop-nav a[aria-current="page"] {
+.desktop-nav a[aria-current='page'] {
   box-shadow: 0 1px var(--coal);
 }
 .desktop-nav > div:last-child a:last-child {
@@ -1225,4 +1224,38 @@ select {
 .logo img,
 .footer-top img {
   height: auto;
+}
+
+/* --- Animations au défilement (voir src/scripts/animations.ts) --- */
+/* Les éléments ne sont masqués que si le script est chargé (classe anim-pret),
+   donc le contenu reste visible même sans JavaScript. */
+.anim-pret [data-anim],
+.anim-pret [data-anim-cascade] > * {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+  transition-delay: var(--anim-delai, 0ms);
+}
+.anim-pret [data-anim='fondu'] {
+  transform: none;
+}
+.anim-pret [data-anim='gauche'] {
+  transform: translateX(-40px);
+}
+.anim-pret [data-anim='droite'] {
+  transform: translateX(40px);
+}
+.anim-pret .anim-visible {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .anim-pret [data-anim],
+  .anim-pret [data-anim-cascade] > * {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }

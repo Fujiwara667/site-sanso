@@ -9,6 +9,7 @@ const projets = (await getCollection('projets')).sort((a, b) => a.data.ordre - b
 const contientExemples = projets.some((p) => p.data.exemple);
 const filtres = ['Tous', 'Construction bois', 'Étude bois', 'Protection incendie'];
 ---
+
 <Base titre="Projets">
   <section class="wrap page-title">
     <p class="eyebrow">03 / EXPLORER</p>
@@ -19,14 +20,20 @@ const filtres = ['Tous', 'Construction bois', 'Étude bois', 'Protection incendi
   <section class="wrap projects-page">
     <div class="filters" aria-label="Filtrer les projets">
       {filtres.map((f, i) => (
-        <button type="button" data-filtre={f} aria-pressed={i === 0 ? 'true' : 'false'} class={i === 0 ? 'active' : ''}>{f}</button>
+        <button type="button" data-filtre={f} aria-pressed={i === 0 ? 'true' : 'false'} class={i === 0 ? 'active' : ''}>
+          {f}
+        </button>
       ))}
     </div>
     {contientExemples && (
-      <p class="example-note">Les projets ci-dessous sont des exemples de présentation. Nos références seront ajoutées prochainement.</p>
+      <p class="example-note">
+        Les projets ci-dessous sont des exemples de présentation. Nos références seront ajoutées prochainement.
+      </p>
     )}
     <div class="project-list">
-      {projets.map((p, i) => <ProjetCarte projet={p} numero={i + 1} />)}
+      {projets.map((p, i) => (
+        <ProjetCarte projet={p} numero={i + 1} />
+      ))}
     </div>
   </section>
 
