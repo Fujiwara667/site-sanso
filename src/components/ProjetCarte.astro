@@ -1,0 +1,25 @@
+---
+// Fiche d'un projet (utilisée sur l'accueil et la page Projets)
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  projet: CollectionEntry<'projets'>;
+  numero: number;
+}
+const { projet, numero } = Astro.props;
+const p = projet.data;
+const index = String(numero).padStart(2, '0');
+---
+<article class="project" data-categorie={p.categorie}>
+  <div class="project-image">
+    <Image src={p.image} alt={p.alt} widths={[600, 1000, 1400]} sizes="(max-width: 600px) 100vw, 62vw" />
+    <span class="image-index">{index}{p.exemple ? ' / EXEMPLE' : ''}</span>
+  </div>
+  <div class="project-copy">
+    <p class="eyebrow">{p.categorie}</p>
+    <h3>{p.titre}</h3>
+    <p>{p.resume}</p>
+    {p.meta && <div class="project-meta">{p.meta}</div>}
+  </div>
+</article>

@@ -1,0 +1,24 @@
+---
+// Pied de page
+import { Image } from 'astro:assets';
+import logo from '../assets/logo.png';
+import entreprise from '../data/entreprise.json';
+const annee = new Date().getFullYear();
+---
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <a href="/" aria-label="Accueil"><Image src={logo} alt="SANSO Concept" width={420} /></a>
+      <p>Étudier.<br /><span>Construire.</span></p>
+      <a class="text-link" href="/contact/">Faisons connaissance <span aria-hidden="true">↗</span></a>
+    </div>
+    <div class="footer-bottom">
+      <p>{entreprise.nom.toUpperCase()} / {entreprise.npa} {entreprise.localite.toUpperCase()}</p>
+      <div>
+        <a href="/mentions-legales/">Mentions légales</a>
+        <a href="/confidentialite/">Confidentialité</a>
+        <span>© {annee}</span>
+      </div>
+    </div>
+  </div>
+</footer>

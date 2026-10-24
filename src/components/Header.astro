@@ -1,0 +1,47 @@
+---
+// En-tête : logo + navigation (bureau) + menu mobile.
+import { Image } from 'astro:assets';
+import logo from '../assets/logo.png';
+
+// Liens du menu — modifier ici pour ajouter / renommer une page
+const metiers = [
+  { href: '/construction-bois/', label: 'Construction bois' },
+  { href: '/etude-bois/', label: 'Étude bois' },
+  { href: '/protection-incendie/', label: 'Protection incendie' },
+];
+const autres = [
+  { href: '/projets/', label: 'Projets' },
+  { href: '/a-propos/', label: 'À propos' },
+  { href: '/contact/', label: 'Contact ↗' },
+];
+const courant = Astro.url.pathname.replace(/\/?$/, '/');
+---
+<header class="header">
+  <a class="logo" href="/" aria-label="SANSO Concept — Accueil">
+    <Image src={logo} alt="SANSO Concept" width={348} loading="eager" />
+  </a>
+  <nav class="desktop-nav" aria-label="Navigation principale">
+    <div class="nav-services">
+      {metiers.map((l) => <a href={l.href} aria-current={courant === l.href ? 'page' : undefined}>{l.label}</a>)}
+    </div>
+    <div>
+      {autres.map((l) => <a href={l.href} aria-current={courant === l.href ? 'page' : undefined}>{l.label}</a>)}
+    </div>
+  </nav>
+  <button class="menu-toggle" aria-expanded="false" aria-controls="mobile-nav">Menu +</button>
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Navigation mobile" hidden>
+    {[...metiers, ...autres].map((l) => <a href={l.href}>{l.label}</a>)}
+  </nav>
+</header>
+
+<script>
+  // Ouverture / fermeture du menu mobile
+  const bouton = document.querySelector<HTMLButtonElement>('.menu-toggle');
+  const menu = document.getElementById('mobile-nav');
+  bouton?.addEventListener('click', () => {
+    const ouvert = bouton.getAttribute('aria-expanded') === 'true';
+    bouton.setAttribute('aria-expanded', String(!ouvert));
+    bouton.textContent = ouvert ? 'Menu +' : 'Fermer ×';
+    if (menu) menu.hidden = ouvert;
+  });
+</script>

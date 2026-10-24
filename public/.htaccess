@@ -1,0 +1,29 @@
+# Hébergement Infomaniak (Apache)
+ErrorDocument 404 /404.html
+
+# Interdire l'accès direct aux fichiers de configuration
+<FilesMatch "^contact-config(\.example)?\.php$">
+  Require all denied
+</FilesMatch>
+
+# Forcer HTTPS
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# En-têtes de sécurité
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+  Header set X-Frame-Options "SAMEORIGIN"
+</IfModule>
+
+# Cache long pour les fichiers versionnés (images, CSS, JS, polices)
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 month"
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType font/ttf "access plus 1 year"
+</IfModule>

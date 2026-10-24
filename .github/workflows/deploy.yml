@@ -1,0 +1,70 @@
+# Mise en ligne automatique
+# - Pull request : vérifie que le site se construit sans erreur (+ aperçu si FTP_PREVIEW_DIR est défini)
+# - Fusion dans main : construit le site et l'envoie sur l'hébergement Infomaniak (FTPS)
+name: Construire et publier
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Installer
+        run: npm ci
+
+      - name: Construire le site
+        run: npm run build
+
+      # Fichier de configuration du formulaire, créé à partir des secrets (jamais dans le dépôt)
+      - name: Configurer le formulaire de contact
+        if: github.event_name != 'pull_request' || vars.FTP_PREVIEW_DIR != ''
+        env:
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+          CONTACT_TO: ${{ secrets.CONTACT_TO }}
+        run: |
+          node -e '
+            const q = (s) => "\x27" + String(s ?? "").replace(/\\/g, "\\\\").replace(/\x27/g, "\\\x27") + "\x27";
+            const php = `<?php\nreturn [\n  "smtp_host" => "mail.infomaniak.com",\n  "smtp_port" => 465,\n  "smtp_user" => ${q(process.env.SMTP_USER)},\n  "smtp_pass" => ${q(process.env.SMTP_PASSWORD)},\n  "destinataire" => ${q(process.env.CONTACT_TO)},\n];\n`;
+            require("fs").writeFileSync("dist/contact-config.php", php);
+          '
+          rm -f dist/contact-config.example.php
+
+      # Production : uniquement après fusion dans main
+      - name: Publier sur Infomaniak
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        uses: SamKirkland/FTP-Deploy-Action@v4.4.0
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          local-dir: ./dist/
+          server-dir: ${{ vars.FTP_SERVER_DIR }}
+
+      # Aperçu (optionnel) : chaque pull request est publiée sur le sous-domaine de test
+      - name: Publier l'aperçu
+        if: github.event_name == 'pull_request' && vars.FTP_PREVIEW_DIR != ''
+        uses: SamKirkland/FTP-Deploy-Action@v4.4.0
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          local-dir: ./dist/
+          server-dir: ${{ vars.FTP_PREVIEW_DIR }}

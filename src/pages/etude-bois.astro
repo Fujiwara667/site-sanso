@@ -1,0 +1,25 @@
+---
+// Page métier : Étude bois — modifier les textes ci-dessous
+import PageMetier from '../components/PageMetier.astro';
+import photo from '../assets/photos/etude-bois.png';
+---
+<PageMetier
+  titre="Étude bois"
+  surtitre="STRUCTURE / DIMENSIONNEMENT / EXÉCUTION"
+  verbe="Étudier."
+  accroche="Le projet se construit avant le chantier."
+  numero={2}
+  photo={photo}
+  photoAlt="Illustration de notre savoir-faire : Étude bois"
+  intro="Étude et développement technique des projets de construction bois. Du principe constructif aux plans nécessaires à l’exécution, nous recherchons des solutions cohérentes avec l’architecture, le budget et les contraintes du terrain."
+  prestations={[
+    { titre: 'Avant-projet', texte: 'Principes constructifs, variantes techniques, faisabilité et prédimensionnement.' },
+    { titre: 'Dimensionnement', texte: 'Calcul des éléments de structure bois et vérifications nécessaires au projet.' },
+    { titre: 'Plans et détails', texte: 'Plans de structure, plans d’exécution, détails constructifs et coordination des interfaces.' },
+    { titre: 'Appels d’offres', texte: 'Métrés, libellés de soumission, appui technique et comparaison des offres.' },
+  ]}
+  liens={[
+    { href: '/construction-bois/', label: 'Construction bois' },
+    { href: '/protection-incendie/', label: 'Protection incendie' },
+  ]}
+/>

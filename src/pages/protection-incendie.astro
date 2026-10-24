@@ -1,0 +1,24 @@
+---
+// Page métier : Protection incendie — modifier les textes ci-dessous
+import PageMetier from '../components/PageMetier.astro';
+import photo from '../assets/photos/protection-incendie.png';
+---
+<PageMetier
+  titre="Protection incendie"
+  surtitre="CONCEPT / PLANIFICATION / SUIVI"
+  verbe="Sécuriser."
+  accroche="Anticiper les exigences. Accompagner le projet."
+  numero={3}
+  photo={photo}
+  photoAlt="Illustration de notre savoir-faire : Protection incendie"
+  intro="Concepts et planification de protection incendie pour les bâtiments neufs, les transformations et les rénovations. Nous intégrons les exigences au projet pour développer des mesures adaptées au bâtiment et à son utilisation."
+  prestations={[
+    { titre: 'Assurance qualité', texte: 'Prise en charge du mandat de responsable de l’assurance qualité, selon le degré AQ et les compétences applicables au projet. Établissement des concepts et des plans de protection incendie.' },
+    { titre: 'Suivi et conformité', texte: 'Contrôles en cours de travaux, suivi des mesures et accompagnement jusqu’à la clôture du projet.' },
+    { titre: 'Analyse de l’existant', texte: 'Analyse des bâtiments existants, identification des écarts et définition des mesures nécessaires dans le cadre des travaux prévus.' },
+  ]}
+  liens={[
+    { href: '/construction-bois/', label: 'Construction bois' },
+    { href: '/etude-bois/', label: 'Étude bois' },
+  ]}
+/>

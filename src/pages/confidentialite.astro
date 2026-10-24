@@ -1,0 +1,20 @@
+---
+// Déclaration de confidentialité (nLPD) — À FAIRE VALIDER par SANSO Concept avant mise en ligne
+import Base from '../layouts/Base.astro';
+import e from '../data/entreprise.json';
+---
+<Base titre="Confidentialité">
+  <section class="wrap legal">
+    <h1>Confidentialité.</h1>
+    <h2>Responsable du traitement</h2>
+    <p>{e.raisonSociale}, {e.adresse}, {e.npa} {e.localite} — <a href={`mailto:${e.email}`}>{e.email}</a>.</p>
+    <h2>Vos demandes</h2>
+    <p>Les données transmises via le formulaire de contact (nom ou entreprise, e-mail, téléphone, type de besoin et message) sont utilisées uniquement pour répondre à votre demande et étudier votre projet. Elles ne sont ni vendues ni transmises à des tiers.</p>
+    <h2>Traitement et conservation</h2>
+    <p>Le formulaire transmet votre message par e-mail à notre messagerie, hébergée en Suisse par Infomaniak. Aucune donnée du formulaire n’est conservée sur le site lui-même. Les échanges sont conservés le temps nécessaire au suivi de votre demande et de l’éventuel mandat.</p>
+    <h2>Vos droits</h2>
+    <p>Vous pouvez demander l’accès, la rectification ou la suppression de vos données en écrivant à <a href={`mailto:${e.email}`}>{e.email}</a>.</p>
+    <h2>Cookies et liens externes</h2>
+    <p>Ce site n’utilise aucun cookie, aucun outil publicitaire ni mesure d’audience. Les polices de caractères sont hébergées sur notre serveur. Le lien « Nous situer » ouvre Google Maps, qui applique sa propre politique de confidentialité.</p>
+  </section>
+</Base>
