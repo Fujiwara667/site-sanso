@@ -1,0 +1,9 @@
+# Hébergement de TEST (Netlify) — aperçu du site et de chaque pull request.
+# Le site définitif sera sur Infomaniak (voir .github/workflows/deploy.yml).
+# Note : le formulaire de contact (PHP) ne fonctionne pas sur Netlify, seulement sur Infomaniak.
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "24"

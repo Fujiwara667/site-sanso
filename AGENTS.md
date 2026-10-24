@@ -59,7 +59,7 @@ Le propriétaire n'est pas informaticien : il te parle en français, simplement.
 - `npm run build` — construire le site dans `dist/` (doit réussir)
 
 ## Publication
-- Chaque modification passe par une **pull request** vers `main`.
+- Chaque modification passe par une **pull request** vers `main` (Netlify publie un aperçu de chaque pull request).
 - La fusion dans `main` publie automatiquement le site sur Infomaniak (GitHub Actions, `.github/workflows/deploy.yml`).
 - En cas d'erreur : annuler la pull request avec le bouton « Revert » de GitHub.
 

@@ -1,6 +1,8 @@
 # Mise en ligne automatique
 # - Pull request : vérifie que le site se construit sans erreur (+ aperçu si FTP_PREVIEW_DIR est défini)
 # - Fusion dans main : construit le site et l'envoie sur l'hébergement Infomaniak (FTPS)
+#   → la publication Infomaniak ne s'active que lorsque la variable FTP_SERVER_DIR est définie.
+#   En attendant, l'hébergement de test (Netlify) publie le site tout seul via netlify.toml.
 name: Construire et publier
 
 on:
@@ -32,7 +34,7 @@ jobs:
 
       # Fichier de configuration du formulaire, créé à partir des secrets (jamais dans le dépôt)
       - name: Configurer le formulaire de contact
-        if: github.event_name != 'pull_request' || vars.FTP_PREVIEW_DIR != ''
+        if: vars.FTP_SERVER_DIR != ''
         env:
           SMTP_USER: ${{ secrets.SMTP_USER }}
           SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
@@ -47,7 +49,7 @@ jobs:
 
       # Production : uniquement après fusion dans main
       - name: Publier sur Infomaniak
-        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request' && vars.FTP_SERVER_DIR != ''
         uses: SamKirkland/FTP-Deploy-Action@v4.4.0
         with:
           server: ${{ secrets.FTP_SERVER }}
