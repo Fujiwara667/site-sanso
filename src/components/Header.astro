@@ -2,17 +2,11 @@
 // En-tête : logo + navigation (bureau) + menu mobile.
 import { Image } from 'astro:assets';
 import logo from '../assets/logo.png';
-import entreprise from '../data/entreprise.json';
 
-// Liens du menu — modifier ici pour ajouter / renommer une page
-const metiers = [
-  { href: '/construction-bois/', label: 'Construction bois' },
-  { href: '/etude-bois/', label: 'Étude bois' },
-  { href: '/protection-incendie/', label: 'Protection incendie' },
-];
-const autres = [
+// Liens du menu — modifier ici pour ajouter / renommer une page.
+// Les pages métiers et À propos sont accessibles depuis l'accueil et le pied de page.
+const liens = [
   { href: '/projets/', label: 'Réalisations' },
-  { href: '/a-propos/', label: 'À propos' },
   { href: '/contact/', label: 'Contact ↗' },
 ];
 const courant = Astro.url.pathname.replace(/\/?$/, '/');
@@ -23,15 +17,8 @@ const courant = Astro.url.pathname.replace(/\/?$/, '/');
     <Image src={logo} alt="SANSO Concept" width={348} loading="eager" />
   </a>
   <nav class="desktop-nav" aria-label="Navigation principale">
-    <div class="nav-services">
-      {metiers.map((l) => (
-        <a href={l.href} aria-current={courant === l.href ? 'page' : undefined}>
-          {l.label}
-        </a>
-      ))}
-    </div>
     <div>
-      {autres.map((l) => (
+      {liens.map((l) => (
         <a href={l.href} aria-current={courant === l.href ? 'page' : undefined}>
           {l.label}
         </a>
@@ -42,10 +29,9 @@ const courant = Astro.url.pathname.replace(/\/?$/, '/');
     Menu +
   </button>
   <nav class="mobile-nav" id="mobile-nav" aria-label="Navigation mobile" hidden>
-    {[...metiers, ...autres].map((l) => (
+    {liens.map((l) => (
       <a href={l.href}>{l.label}</a>
     ))}
-    <a href={`tel:${entreprise.telephoneLien}`}>Appeler · {entreprise.telephone}</a>
   </nav>
 </header>
 

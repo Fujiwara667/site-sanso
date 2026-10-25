@@ -170,7 +170,7 @@ a:hover .text-link,
 .desktop-nav {
   text-transform: uppercase;
   flex: 1;
-  justify-content: space-between;
+  justify-content: flex-end;
   display: flex;
 }
 .desktop-nav > div {
@@ -469,6 +469,15 @@ footer {
 .footer-bottom > div {
   gap: 28px;
   display: flex;
+}
+.footer-pages {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 28px;
+  text-transform: uppercase;
+}
+.footer-pages a:hover {
+  color: var(--peach);
 }
 .page-title {
   padding-block: 70px 65px;
@@ -1065,9 +1074,10 @@ select {
   .footer-bottom {
     display: block;
   }
-  .footer-bottom > div {
+  .footer-bottom > div,
+  .footer-pages {
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 12px 20px;
     margin-top: 20px;
   }
   footer {
