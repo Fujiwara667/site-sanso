@@ -7,3 +7,10 @@
 
 [build.environment]
   NODE_VERSION = "24"
+
+# Site de test public : demander aux moteurs de recherche de ne pas l'indexer
+# (n'affecte pas le site définitif sur Infomaniak).
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
