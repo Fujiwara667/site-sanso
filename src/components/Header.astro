@@ -2,6 +2,7 @@
 // En-tête : logo + navigation (bureau) + menu mobile.
 import { Image } from 'astro:assets';
 import logo from '../assets/logo.png';
+import entreprise from '../data/entreprise.json';
 
 // Liens du menu — modifier ici pour ajouter / renommer une page
 const metiers = [
@@ -10,7 +11,7 @@ const metiers = [
   { href: '/protection-incendie/', label: 'Protection incendie' },
 ];
 const autres = [
-  { href: '/projets/', label: 'Projets' },
+  { href: '/projets/', label: 'Réalisations' },
   { href: '/a-propos/', label: 'À propos' },
   { href: '/contact/', label: 'Contact ↗' },
 ];
@@ -44,6 +45,7 @@ const courant = Astro.url.pathname.replace(/\/?$/, '/');
     {[...metiers, ...autres].map((l) => (
       <a href={l.href}>{l.label}</a>
     ))}
+    <a href={`tel:${entreprise.telephoneLien}`}>Appeler · {entreprise.telephone}</a>
   </nav>
 </header>
 

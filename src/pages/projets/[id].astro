@@ -26,26 +26,18 @@ const infos = [p.categorie, p.lieu, p.annee].filter(Boolean).join(' / ');
 <Base titre={p.titre} description={p.resume}>
   <section class="wrap page-title projet-titre">
     <a class="text-link retour" href="/projets/">
-      <span aria-hidden="true">←</span> Tous les projets
+      <span aria-hidden="true">←</span> Toutes les réalisations
     </a>
     <p class="eyebrow">
       {infos}
       {p.exemple ? ' / EXEMPLE' : ''}
     </p>
-    <h1 class="titre-anime">{p.titre}</h1>
+    <h1>{p.titre}</h1>
     <p>{p.resume}</p>
   </section>
 
   <div class="projet-photo" data-parallax-cadre>
-    <Image
-      src={p.image}
-      alt={p.alt}
-      widths={[800, 1400, 1920]}
-      quality={70}
-      sizes="100vw"
-      loading="eager"
-      data-parallax="0.12"
-    />
+    <Image src={p.image} alt={p.alt} widths={[800, 1400, 1920]} quality={70} sizes="100vw" loading="eager" />
   </div>
 
   <section class="wrap projet-texte" data-anim>
