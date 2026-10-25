@@ -13,7 +13,7 @@ Rien n'est visible sur le vrai site avant la publication.
 
 - [x] Application GitHub « ChatGPT Codex Connector » autorisée sur le dépôt `site-sanso`.
 - [ ] Invitation de Nicolas comme collaborateur sur le dépôt.
-- [ ] Accès de Nicolas aux aperçus Netlify.
+- [x] Site de test et aperçus Netlify publics : aucun compte Netlify nécessaire pour les voir.
 
 ## Étape 1 – Compte GitHub et invitation (5 min)
 
