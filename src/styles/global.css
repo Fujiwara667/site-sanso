@@ -170,7 +170,7 @@ a:hover .text-link,
 .desktop-nav {
   text-transform: uppercase;
   flex: 1;
-  justify-content: space-between;
+  justify-content: flex-end;
   display: flex;
 }
 .desktop-nav > div {
@@ -425,6 +425,12 @@ a:hover .text-link,
 .cta > a:hover > span {
   transform: translate(8px, -8px);
 }
+.cta-direct {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 40px;
+  margin-top: 28px;
+}
 footer {
   background: var(--coal);
   color: var(--cream);
@@ -463,6 +469,15 @@ footer {
 .footer-bottom > div {
   gap: 28px;
   display: flex;
+}
+.footer-pages {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 28px;
+  text-transform: uppercase;
+}
+.footer-pages a:hover {
+  color: var(--peach);
 }
 .page-title {
   padding-block: 70px 65px;
@@ -1059,9 +1074,10 @@ select {
   .footer-bottom {
     display: block;
   }
-  .footer-bottom > div {
+  .footer-bottom > div,
+  .footer-pages {
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 12px 20px;
     margin-top: 20px;
   }
   footer {
@@ -1344,10 +1360,12 @@ img[data-parallax] {
 }
 .hero-contenu .eyebrow {
   margin-bottom: 24px;
-  animation: fondu 1s 0.3s both;
 }
 .hero-immersif h1 {
-  font-size: clamp(64px, 11vw, 176px);
+  font-size: clamp(56px, 8.5vw, 136px);
+}
+.hero-immersif h1 > span {
+  display: block;
 }
 .hero-immersif h1 > span:last-child {
   color: var(--peach);
@@ -1358,7 +1376,41 @@ img[data-parallax] {
   align-items: end;
   gap: 40px;
   margin-top: 36px;
-  animation: fondu 1s 0.5s both;
+}
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 28px;
+}
+.hero-tel {
+  font-family: Cascadia, monospace;
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  border-bottom: 1px solid currentColor;
+  padding-block: 6px;
+}
+.hero-tel:hover {
+  color: var(--peach);
+}
+
+/* Section « La différence SANSO » */
+.atout h2 {
+  margin-top: 16px;
+}
+.atout-faits {
+  list-style: none;
+  padding: 0;
+  margin: 32px 0 0;
+  border-top: 1px solid var(--coal);
+}
+.atout-faits li {
+  font-family: Cascadia, monospace;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  padding-block: 14px;
+  border-bottom: 1px solid var(--coal);
 }
 .hero-bas p {
   max-width: 420px;
@@ -1630,7 +1682,7 @@ img[data-parallax] {
     padding-bottom: 36px;
   }
   .hero-immersif h1 {
-    font-size: clamp(60px, 18vw, 100px);
+    font-size: clamp(48px, 15vw, 90px);
   }
   .hero-bas {
     display: block;

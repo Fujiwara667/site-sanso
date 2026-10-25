@@ -41,9 +41,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
       <slot />
     </main>
     <Footer />
-    <script>
-      // Animations au défilement (attribut data-anim) — voir src/scripts/animations.ts
-      import '../scripts/animations.ts';
-    </script>
+    <!-- Animations en pause (version « base ») : pour les réactiver, remettre
+    <script>import '../scripts/animations.ts';</script> -->
   </body>
 </html>

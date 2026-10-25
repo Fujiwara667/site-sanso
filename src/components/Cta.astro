@@ -1,5 +1,6 @@
 ---
 // Grand bloc « Un projet en tête ? Parlons-en. » en bas de page
+import entreprise from '../data/entreprise.json';
 ---
 
 <section class="cta wrap">
@@ -8,4 +9,12 @@
     <h2>Parlons-en.</h2>
     <span aria-hidden="true">↗</span>
   </a>
+  <p class="cta-direct">
+    <a class="text-link" href={`tel:${entreprise.telephoneLien}`}>
+      {entreprise.telephone}
+    </a>
+    <a class="text-link" href={`mailto:${entreprise.email}`}>
+      {entreprise.email}
+    </a>
+  </p>
 </section>
