@@ -32,6 +32,10 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <a class="skip" href="#main">
       Aller au contenu
     </a>
+    <!-- Badge visible uniquement sur la branche « proposition » (version de démonstration) -->
+    <a class="badge-proposition" href="https://sanso-concept-test.netlify.app">
+      Version proposition · voir la version actuelle ↗
+    </a>
     <Header />
     <main id="main">
       <slot />

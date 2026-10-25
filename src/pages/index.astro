@@ -6,6 +6,9 @@ import Base from '../layouts/Base.astro';
 import Cta from '../components/Cta.astro';
 import ProjetCarte from '../components/ProjetCarte.astro';
 import photoHero from '../assets/photos/accueil-chantier-leman.jpg';
+import photoConstruction from '../assets/photos/construction-bois.jpg';
+import photoEtude from '../assets/photos/etude-bois.png';
+import photoIncendie from '../assets/photos/protection-incendie.png';
 
 // Projets marqués « accueil: true », triés par ordre
 const projets = (await getCollection('projets'))
@@ -17,38 +20,22 @@ const metiers = [
     href: '/construction-bois/',
     titre: 'Construction bois',
     texte: 'Construire avec le bois. Transformer avec justesse.',
+    photo: photoConstruction,
   },
-  { href: '/etude-bois/', titre: 'Étude bois', texte: 'Le projet se construit avant le chantier.' },
+  { href: '/etude-bois/', titre: 'Étude bois', texte: 'Le projet se construit avant le chantier.', photo: photoEtude },
   {
     href: '/protection-incendie/',
     titre: 'Protection incendie',
     texte: 'Anticiper les exigences. Accompagner le projet.',
+    photo: photoIncendie,
   },
 ];
 ---
 
 <Base titre="Étudier. Construire.">
-  <section class="home-hero">
-    <div class="hero-top wrap">
-      <div>
-        <p class="eyebrow">BOIS / ÉTUDE / PROTECTION INCENDIE</p>
-        <h1>
-          <span>Étudier.</span>
-          <span>Construire.</span>
-        </h1>
-      </div>
-      <div class="hero-note">
-        <span class="cross">+</span>
-        <p>
-          Construction bois, étude technique et protection incendie. À Puidoux, nous relions la réflexion du bureau à la
-          réalité du chantier.
-        </p>
-        <a class="text-link" href="/contact/">
-          Votre projet commence ici <span aria-hidden="true">↗</span>
-        </a>
-      </div>
-    </div>
-    <div class="hero-photo">
+  <!-- Ouverture plein écran : photo en parallaxe, titre révélé au chargement -->
+  <section class="hero-immersif">
+    <div class="hero-fond">
       <Image
         src={photoHero}
         alt="Levage d’un élément de construction bois sur un chantier au-dessus du Léman"
@@ -57,16 +44,48 @@ const metiers = [
         sizes="100vw"
         loading="eager"
         fetchpriority="high"
+        data-parallax="0.18"
       />
-      <div class="photo-caption">
-        <span>DE LA CONCEPTION À LA RÉALISATION</span>
-        <span>PUIDOUX / SUISSE ROMANDE</span>
+    </div>
+    <div class="wrap hero-contenu">
+      <p class="eyebrow">BOIS / ÉTUDE / PROTECTION INCENDIE</p>
+      <h1 class="titre-revele">
+        <span>
+          <span>Étudier.</span>
+        </span>
+        <span>
+          <span>Construire.</span>
+        </span>
+      </h1>
+      <div class="hero-bas">
+        <p>
+          Construction bois, étude technique et protection incendie. À Puidoux, nous relions la réflexion du bureau à la
+          réalité du chantier.
+        </p>
+        <a class="bouton-clair" href="/contact/">
+          Votre projet commence ici <span aria-hidden="true">↗</span>
+        </a>
       </div>
     </div>
+    <span class="hero-defiler" aria-hidden="true">
+      DÉFILER ↓
+    </span>
   </section>
 
+  <!-- Bandeau des métiers qui défile en continu -->
+  <div class="bandeau-metiers" aria-hidden="true">
+    <div class="bandeau-piste">
+      {[0, 1].map(() => (
+        <span>
+          Construction bois <i>+</i> Étude bois <i>+</i> Protection incendie <i>+</i> Puidoux / Suisse romande{' '}
+          <i>+</i>{' '}
+        </span>
+      ))}
+    </div>
+  </div>
+
   <section class="expertise wrap">
-    <div class="section-heading">
+    <div class="section-heading" data-anim>
       <div>
         <p class="eyebrow">01 / NOS COMPÉTENCES</p>
         <h2>
@@ -76,9 +95,12 @@ const metiers = [
         </h2>
       </div>
     </div>
-    <div class="services-grid">
+    <div class="metiers-grille" data-anim-cascade>
       {metiers.map((m, i) => (
-        <a class="service-card" href={m.href}>
+        <a class="metier-carte" href={m.href}>
+          <div class="metier-photo">
+            <Image src={m.photo} alt="" widths={[500, 900]} sizes="(max-width: 600px) 100vw, 33vw" />
+          </div>
           <div class="card-top">
             <span class="eyebrow">0{i + 1}</span>
             <span aria-hidden="true">↗</span>
@@ -92,7 +114,7 @@ const metiers = [
   </section>
 
   <section class="approach">
-    <div class="wrap approach-grid">
+    <div class="wrap approach-grid" data-anim>
       <div>
         <p class="eyebrow">L’ÉTUDE RENCONTRE LE CHANTIER</p>
         <h2>Du premier trait au dernier assemblage.</h2>
@@ -107,13 +129,13 @@ const metiers = [
         </a>
       </div>
     </div>
-    <div class="approach-word" aria-hidden="true">
+    <div class="approach-word" aria-hidden="true" data-defile="0.35">
       MAÎTRISE.
     </div>
   </section>
 
   <section class="wrap selected">
-    <div class="section-heading">
+    <div class="section-heading" data-anim>
       <div>
         <p class="eyebrow">02 / SUR LE TERRAIN</p>
         <h2>Le bois, en pratique.</h2>

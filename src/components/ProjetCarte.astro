@@ -1,5 +1,5 @@
 ---
-// Fiche d'un projet (utilisée sur l'accueil et la page Projets)
+// Fiche d'un projet (utilisée sur l'accueil et la page Projets) — cliquable vers la page du projet
 import { Image } from 'astro:assets';
 import type { CollectionEntry } from 'astro:content';
 
@@ -12,18 +12,23 @@ const p = projet.data;
 const index = String(numero).padStart(2, '0');
 ---
 
-<article class="project" data-categorie={p.categorie}>
-  <div class="project-image">
+<article class="project" data-categorie={p.categorie} data-anim>
+  <a class="project-image" href={`/projets/${projet.id}/`} aria-label={`Voir le projet ${p.titre}`}>
     <Image src={p.image} alt={p.alt} widths={[600, 1000, 1400]} sizes="(max-width: 600px) 100vw, 62vw" />
     <span class="image-index">
       {index}
       {p.exemple ? ' / EXEMPLE' : ''}
     </span>
-  </div>
+  </a>
   <div class="project-copy">
     <p class="eyebrow">{p.categorie}</p>
-    <h3>{p.titre}</h3>
+    <h3>
+      <a href={`/projets/${projet.id}/`}>{p.titre}</a>
+    </h3>
     <p>{p.resume}</p>
+    <a class="text-link" href={`/projets/${projet.id}/`}>
+      Voir le projet <span aria-hidden="true">↗</span>
+    </a>
     {p.meta && <div class="project-meta">{p.meta}</div>}
   </div>
 </article>

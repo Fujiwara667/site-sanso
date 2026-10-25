@@ -25,24 +25,36 @@ const p = Astro.props;
   <section class="service-hero">
     <div class="wrap service-hero-title">
       <p class="eyebrow">{p.surtitre}</p>
-      <h1>{p.verbe}</h1>
+      <h1 class="titre-revele">
+        <span>
+          <span>{p.verbe}</span>
+        </span>
+      </h1>
       <div class="service-lead">
         <p>{p.accroche}</p>
         <span class="eyebrow">0{p.numero} / COMPÉTENCE</span>
       </div>
     </div>
     <div class="service-photo">
-      <Image src={p.photo} alt={p.photoAlt} widths={[800, 1400, 1920]} quality={70} sizes="100vw" loading="eager" />
+      <Image
+        src={p.photo}
+        alt={p.photoAlt}
+        widths={[800, 1400, 1920]}
+        quality={70}
+        sizes="100vw"
+        loading="eager"
+        data-parallax="0.12"
+      />
     </div>
   </section>
 
-  <section class="wrap service-intro">
+  <section class="wrap service-intro" data-anim>
     <h2>{p.titre}.</h2>
     <p>{p.intro}</p>
   </section>
 
   <section class="peach">
-    <div class="wrap prestations">
+    <div class="wrap prestations" data-anim-cascade>
       <p class="eyebrow">NOTRE ACCOMPAGNEMENT</p>
       {p.prestations.map((s, i) => (
         <div class="prestation">
@@ -54,7 +66,7 @@ const p = Astro.props;
     </div>
   </section>
 
-  <section class="wrap related">
+  <section class="wrap related" data-anim>
     <div>
       <p class="eyebrow">DU BUREAU AU CHANTIER</p>
       <h2>

@@ -1,9 +1,9 @@
 ---
 // Page Projets : liste tous les fichiers de src/content/projets/, avec filtres par métier
 import { getCollection } from 'astro:content';
-import Base from '../layouts/Base.astro';
-import Cta from '../components/Cta.astro';
-import ProjetCarte from '../components/ProjetCarte.astro';
+import Base from '../../layouts/Base.astro';
+import Cta from '../../components/Cta.astro';
+import ProjetCarte from '../../components/ProjetCarte.astro';
 
 const projets = (await getCollection('projets')).sort((a, b) => a.data.ordre - b.data.ordre);
 const contientExemples = projets.some((p) => p.data.exemple);
@@ -11,7 +11,7 @@ const filtres = ['Tous', 'Construction bois', 'Étude bois', 'Protection incendi
 ---
 
 <Base titre="Projets">
-  <section class="wrap page-title">
+  <section class="wrap page-title" data-anim>
     <p class="eyebrow">03 / EXPLORER</p>
     <h1>Projets.</h1>
     <p>Des idées qui prennent forme.</p>

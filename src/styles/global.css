@@ -1259,3 +1259,424 @@ select {
     transition: none;
   }
 }
+
+/* =========================================================
+   VERSION PROPOSITION — mise en page retravaillée et animations
+   ========================================================= */
+
+/* En-tête collant, masqué en descendant, réapparaît en remontant */
+.header {
+  position: sticky;
+  top: 0;
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+}
+.header-defile {
+  box-shadow: 0 1px 0 var(--line);
+}
+.header-masque {
+  transform: translateY(-100%);
+}
+
+/* Photos en parallaxe : le cadre coupe ce qui dépasse */
+.hero-fond,
+.service-photo,
+.about-photo,
+.projet-photo {
+  overflow: hidden;
+}
+img[data-parallax] {
+  transform: scale(1.18);
+  will-change: transform;
+}
+
+/* Titre révélé ligne par ligne au chargement */
+.titre-revele > span {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.06em;
+}
+.titre-revele > span > span {
+  display: block;
+  animation: titre-monte 1s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+.titre-revele > span:nth-child(2) > span {
+  animation-delay: 0.14s;
+}
+@keyframes titre-monte {
+  from {
+    transform: translateY(105%);
+  }
+  to {
+    transform: none;
+  }
+}
+
+/* Ouverture plein écran */
+.hero-immersif {
+  position: relative;
+  height: min(88vh, 900px);
+  min-height: 560px;
+  display: flex;
+  align-items: flex-end;
+  color: var(--cream);
+  overflow: hidden;
+}
+.hero-fond {
+  position: absolute;
+  inset: 0;
+}
+.hero-fond img {
+  height: 100%;
+  object-position: 50% 42%;
+}
+.hero-fond::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, #1e1e1e1a 0%, #1e1e1e33 45%, #1e1e1ed9 100%);
+}
+.hero-contenu {
+  position: relative;
+  z-index: 1;
+  padding-bottom: 56px;
+}
+.hero-contenu .eyebrow {
+  margin-bottom: 24px;
+  animation: fondu 1s 0.3s both;
+}
+.hero-immersif h1 {
+  font-size: clamp(64px, 11vw, 176px);
+}
+.hero-immersif h1 > span:last-child {
+  color: var(--peach);
+}
+.hero-bas {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 40px;
+  margin-top: 36px;
+  animation: fondu 1s 0.5s both;
+}
+.hero-bas p {
+  max-width: 420px;
+  font-size: 19px;
+}
+.bouton-clair {
+  flex-shrink: 0;
+  background: var(--cream);
+  color: var(--coal);
+  padding: 16px 24px;
+  font-family: Cascadia, monospace;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  transition:
+    background 0.2s,
+    transform 0.2s;
+}
+.bouton-clair:hover {
+  background: var(--peach);
+  transform: translateY(-2px);
+}
+.hero-defiler {
+  position: absolute;
+  right: 56px;
+  top: 32px;
+  z-index: 1;
+  font-family: Cascadia, monospace;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  animation: fondu 1s 0.9s both;
+}
+@keyframes fondu {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Bandeau des métiers qui défile */
+.bandeau-metiers {
+  background: var(--coal);
+  color: var(--cream);
+  overflow: hidden;
+  padding-block: 18px;
+  white-space: nowrap;
+}
+.bandeau-piste {
+  display: inline-flex;
+  animation: bandeau 38s linear infinite;
+}
+.bandeau-piste span {
+  font-family: AptosDisplay, Aptos, sans-serif;
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  padding-right: 0.5em;
+}
+.bandeau-piste i {
+  font-style: normal;
+  color: var(--peach);
+  padding-inline: 0.4em;
+}
+@keyframes bandeau {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Cartes métiers avec photo */
+.metiers-grille {
+  border-top: 1px solid var(--coal);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  padding-top: 30px;
+}
+.metier-carte {
+  display: flex;
+  flex-direction: column;
+}
+.metier-photo {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  margin-bottom: 24px;
+  background: var(--line);
+}
+.metier-photo img {
+  height: 100%;
+  transition:
+    transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1),
+    filter 0.5s;
+  filter: grayscale(0.35);
+}
+.metier-carte:hover .metier-photo img {
+  transform: scale(1.06);
+  filter: none;
+}
+.metier-carte .card-top {
+  margin-bottom: 18px;
+}
+.metier-carte .card-top > span:last-child {
+  font-size: 28px;
+  transition: transform 0.2s;
+}
+.metier-carte:hover .card-top > span:last-child {
+  transform: translate(5px, -5px);
+}
+.metier-carte h3 {
+  margin-bottom: 16px;
+  font-size: 36px;
+}
+.metier-carte p {
+  margin-bottom: 26px;
+  font-size: 18px;
+}
+.metier-carte .text-link {
+  border: 0;
+  margin-top: auto;
+  align-self: start;
+}
+
+/* Mot géant qui glisse latéralement */
+.approach-word {
+  will-change: transform;
+}
+
+/* Fiches projets cliquables */
+.project-image {
+  display: block;
+}
+.project-copy h3 a:hover {
+  color: var(--peach);
+}
+.project-copy .text-link {
+  margin-top: 24px;
+}
+
+/* Page détaillée d'un projet */
+.projet-titre .retour {
+  margin-bottom: 36px;
+  gap: 12px;
+}
+.projet-titre h1 {
+  font-size: clamp(52px, 7vw, 110px);
+}
+.projet-photo {
+  height: min(78vh, 760px);
+}
+.projet-photo img {
+  height: 100%;
+}
+.projet-texte {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 10%;
+  padding-block: 90px;
+}
+.prose p {
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+.projet-galerie {
+  padding-bottom: 60px;
+}
+.projet-galerie > .eyebrow {
+  margin-bottom: 25px;
+}
+.galerie {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.galerie-item {
+  padding: 0;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  cursor: zoom-in;
+}
+.galerie-item img {
+  height: 100%;
+  transition: transform 0.7s;
+}
+.galerie-item:hover img {
+  transform: scale(1.04);
+}
+.visionneuse {
+  border: 0;
+  padding: 0;
+  max-width: 92vw;
+  max-height: 92vh;
+  background: transparent;
+}
+.visionneuse::backdrop {
+  background: #1e1e1ef2;
+}
+.visionneuse img {
+  max-height: 88vh;
+  width: auto;
+  object-fit: contain;
+}
+.visionneuse-fermer {
+  position: fixed;
+  top: 20px;
+  right: 24px;
+  color: var(--cream);
+  font-size: 40px;
+  line-height: 1;
+}
+.projet-suivant {
+  padding-top: 40px;
+}
+.projet-suivant a {
+  border-top: 1px solid var(--coal);
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding-block: 24px;
+  margin-top: 20px;
+  font-family: AptosDisplay, Aptos, sans-serif;
+  font-size: clamp(32px, 4vw, 56px);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+}
+.projet-suivant a:hover span:last-child {
+  transform: translate(6px, -6px);
+}
+.projet-suivant a span:last-child {
+  transition: transform 0.2s;
+}
+
+/* Bandeau « version proposition » (en haut de page) */
+.badge-proposition {
+  display: block;
+  background: var(--coal);
+  color: var(--cream);
+  padding: 9px 16px;
+  text-align: center;
+  font-family: Cascadia, monospace;
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.badge-proposition:hover {
+  color: var(--peach);
+}
+
+@media (max-width: 850px) {
+  .metiers-grille {
+    grid-template-columns: 1fr 1fr;
+  }
+  .metiers-grille > :last-child {
+    grid-column: 1 / -1;
+  }
+  .hero-defiler {
+    display: none;
+  }
+}
+@media (max-width: 600px) {
+  .hero-immersif {
+    height: 82vh;
+    min-height: 520px;
+  }
+  .hero-contenu {
+    padding-bottom: 36px;
+  }
+  .hero-immersif h1 {
+    font-size: clamp(60px, 18vw, 100px);
+  }
+  .hero-bas {
+    display: block;
+    margin-top: 24px;
+  }
+  .hero-bas p {
+    font-size: 16px;
+    margin-bottom: 22px;
+  }
+  .bandeau-piste span {
+    font-size: 22px;
+  }
+  .metiers-grille {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .metier-carte h3 {
+    font-size: 32px;
+  }
+  .projet-texte {
+    display: block;
+    padding-block: 50px;
+  }
+  .prose p {
+    font-size: 19px;
+  }
+  .projet-photo {
+    height: 56vh;
+  }
+  .galerie {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .titre-revele > span > span,
+  .hero-contenu .eyebrow,
+  .hero-bas,
+  .hero-defiler,
+  .bandeau-piste {
+    animation: none;
+  }
+  .header-masque {
+    transform: none;
+  }
+  img[data-parallax] {
+    transform: none;
+  }
+}

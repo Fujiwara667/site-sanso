@@ -23,9 +23,10 @@ import entreprise from '../data/entreprise.json';
       widths={[800, 1400, 1920]}
       quality={70}
       sizes="100vw"
+      data-parallax="0.12"
     />
   </div>
-  <section class="wrap about-text">
+  <section class="wrap about-text" data-anim>
     <h2>
       <span>
         Le sens du détail.
@@ -43,7 +44,7 @@ import entreprise from '../data/entreprise.json';
     </p>
   </section>
   <section class="peach">
-    <div class="wrap about-text">
+    <div class="wrap about-text" data-anim>
       <h2>Notre approche.</h2>
       <p>
         Nous pensons les projets avec leur mise en œuvre. Les choix de structure, les détails et les interfaces sont
@@ -51,7 +52,7 @@ import entreprise from '../data/entreprise.json';
       </p>
     </div>
   </section>
-  <section class="wrap person">
+  <section class="wrap person" data-anim>
     <div>
       <p class="eyebrow">UN INTERLOCUTEUR / DU DÉBUT À LA FIN</p>
       <h2>{entreprise.responsable}</h2>

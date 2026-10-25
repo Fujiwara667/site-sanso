@@ -1,0 +1,105 @@
+---
+// Page détaillée d'un projet : générée automatiquement pour chaque fichier de src/content/projets/
+import { Image } from 'astro:assets';
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Cta from '../../components/Cta.astro';
+
+export async function getStaticPaths() {
+  const projets = (await getCollection('projets')).sort((a, b) => a.data.ordre - b.data.ordre);
+  return projets.map((projet, i) => ({
+    params: { id: projet.id },
+    props: { projet, suivant: projets[(i + 1) % projets.length] },
+  }));
+}
+
+interface Props {
+  projet: CollectionEntry<'projets'>;
+  suivant: CollectionEntry<'projets'>;
+}
+const { projet, suivant } = Astro.props;
+const p = projet.data;
+const { Content } = await render(projet);
+const infos = [p.categorie, p.lieu, p.annee].filter(Boolean).join(' / ');
+---
+
+<Base titre={p.titre} description={p.resume}>
+  <section class="wrap page-title projet-titre">
+    <a class="text-link retour" href="/projets/">
+      <span aria-hidden="true">←</span> Tous les projets
+    </a>
+    <p class="eyebrow">
+      {infos}
+      {p.exemple ? ' / EXEMPLE' : ''}
+    </p>
+    <h1 class="titre-anime">{p.titre}</h1>
+    <p>{p.resume}</p>
+  </section>
+
+  <div class="projet-photo" data-parallax-cadre>
+    <Image
+      src={p.image}
+      alt={p.alt}
+      widths={[800, 1400, 1920]}
+      quality={70}
+      sizes="100vw"
+      loading="eager"
+      data-parallax="0.12"
+    />
+  </div>
+
+  <section class="wrap projet-texte" data-anim>
+    <p class="eyebrow">LE PROJET</p>
+    <div class="prose">
+      <Content />
+    </div>
+  </section>
+
+  {p.galerie.length > 0 && (
+    <section class="wrap projet-galerie">
+      <p class="eyebrow">
+        GALERIE / {p.galerie.length} PHOTO{p.galerie.length > 1 ? 'S' : ''}
+      </p>
+      <div class="galerie" data-anim-cascade>
+        {p.galerie.map((photo) => (
+          <button type="button" class="galerie-item" aria-label={`Agrandir : ${photo.alt}`}>
+            <Image src={photo.src} alt={photo.alt} widths={[500, 900, 1600]} sizes="(max-width: 600px) 100vw, 33vw" />
+          </button>
+        ))}
+      </div>
+    </section>
+  )}
+
+  <section class="wrap projet-suivant" data-anim>
+    <p class="eyebrow">PROJET SUIVANT</p>
+    <a href={`/projets/${suivant.id}/`}>
+      <span>{suivant.data.titre}</span>
+      <span aria-hidden="true">↗</span>
+    </a>
+  </section>
+
+  <Cta />
+
+  <dialog class="visionneuse" aria-label="Photo agrandie">
+    <button type="button" class="visionneuse-fermer" aria-label="Fermer">
+      ×
+    </button>
+    <img alt="" />
+  </dialog>
+</Base>
+
+<script>
+  // Galerie : clic sur une photo → affichage en grand (Échap ou clic pour fermer)
+  const visionneuse = document.querySelector<HTMLDialogElement>('.visionneuse');
+  const grande = visionneuse?.querySelector('img');
+  document.querySelectorAll<HTMLButtonElement>('.galerie-item').forEach((bouton) =>
+    bouton.addEventListener('click', () => {
+      const img = bouton.querySelector('img');
+      if (!visionneuse || !grande || !img) return;
+      grande.src = img.currentSrc || img.src;
+      grande.alt = img.alt;
+      visionneuse.showModal();
+    }),
+  );
+  visionneuse?.addEventListener('click', () => visionneuse.close());
+</script>
