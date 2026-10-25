@@ -2,6 +2,9 @@
 
 Site vitrine de SANSO Concept — www.sanso-concept.ch
 
+- Site de test : https://sanso-concept-test.netlify.app
+- **Nicolas : le guide d'utilisation est ici → [GUIDE.md](GUIDE.md)**
+
 ## Modifier le site
 
 Voir **[GUIDE.md](GUIDE.md)** (circuit : demander → aperçu → corriger → publier, avec ChatGPT, Claude ou un autre agent).
