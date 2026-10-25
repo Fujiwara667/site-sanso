@@ -6,6 +6,10 @@ updates:
     directory: /
     schedule:
       interval: monthly
+    ignore:
+      # @astrojs/check n'accepte que TypeScript 5 ou 6 : pas de passage automatique en version majeure
+      - dependency-name: typescript
+        update-types: ['version-update:semver-major']
     groups:
       dependances:
         patterns: ['*']
