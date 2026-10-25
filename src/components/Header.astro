@@ -16,21 +16,34 @@ const autres = [
 ];
 const courant = Astro.url.pathname.replace(/\/?$/, '/');
 ---
+
 <header class="header">
   <a class="logo" href="/" aria-label="SANSO Concept — Accueil">
     <Image src={logo} alt="SANSO Concept" width={348} loading="eager" />
   </a>
   <nav class="desktop-nav" aria-label="Navigation principale">
     <div class="nav-services">
-      {metiers.map((l) => <a href={l.href} aria-current={courant === l.href ? 'page' : undefined}>{l.label}</a>)}
+      {metiers.map((l) => (
+        <a href={l.href} aria-current={courant === l.href ? 'page' : undefined}>
+          {l.label}
+        </a>
+      ))}
     </div>
     <div>
-      {autres.map((l) => <a href={l.href} aria-current={courant === l.href ? 'page' : undefined}>{l.label}</a>)}
+      {autres.map((l) => (
+        <a href={l.href} aria-current={courant === l.href ? 'page' : undefined}>
+          {l.label}
+        </a>
+      ))}
     </div>
   </nav>
-  <button class="menu-toggle" aria-expanded="false" aria-controls="mobile-nav">Menu +</button>
+  <button class="menu-toggle" aria-expanded="false" aria-controls="mobile-nav">
+    Menu +
+  </button>
   <nav class="mobile-nav" id="mobile-nav" aria-label="Navigation mobile" hidden>
-    {[...metiers, ...autres].map((l) => <a href={l.href}>{l.label}</a>)}
+    {[...metiers, ...autres].map((l) => (
+      <a href={l.href}>{l.label}</a>
+    ))}
   </nav>
 </header>
 

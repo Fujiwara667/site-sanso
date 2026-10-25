@@ -3,6 +3,7 @@
 import PageMetier from '../components/PageMetier.astro';
 import photo from '../assets/photos/construction-bois.jpg';
 ---
+
 <PageMetier
   titre="Construction bois"
   surtitre="CHARPENTE / OSSATURE / RÉNOVATION"
@@ -16,7 +17,10 @@ import photo from '../assets/photos/construction-bois.jpg';
     { titre: 'Construction', texte: 'Ossatures bois, charpentes, extensions, couverts, cabanons et terrasses.' },
     { titre: 'Rénovation', texte: 'Toitures, charpentes existantes, isolation et fenêtres de toit.' },
     { titre: 'Transformation', texte: 'Surélévations, modifications de structures et transformations de toiture.' },
-    { titre: 'Enveloppe', texte: 'Isolation et étanchéité de toiture et de façade, bardages et revêtements intérieurs et extérieurs.' },
+    {
+      titre: 'Enveloppe',
+      texte: 'Isolation et étanchéité de toiture et de façade, bardages et revêtements intérieurs et extérieurs.',
+    },
   ]}
   liens={[
     { href: '/etude-bois/', label: 'Étude bois' },

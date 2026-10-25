@@ -13,6 +13,7 @@ const { titre, description = entreprise.descriptionSite } = Astro.props;
 const titreComplet = `${titre} — ${entreprise.nom}`;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 ---
+
 <!doctype html>
 <html lang="fr-CH">
   <head>
@@ -28,11 +29,17 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <meta property="og:locale" content="fr_CH" />
   </head>
   <body>
-    <a class="skip" href="#main">Aller au contenu</a>
+    <a class="skip" href="#main">
+      Aller au contenu
+    </a>
     <Header />
     <main id="main">
       <slot />
     </main>
     <Footer />
+    <script>
+      // Animations au défilement (attribut data-anim) — voir src/scripts/animations.ts
+      import '../scripts/animations.ts';
+    </script>
   </body>
 </html>

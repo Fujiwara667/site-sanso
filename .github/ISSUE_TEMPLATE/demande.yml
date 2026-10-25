@@ -1,6 +1,6 @@
 name: Demande de modification du site
 description: Décrire une modification à faire sur le site (texte, photo, projet, mise en page)
-title: "Modification : "
+title: 'Modification : '
 body:
   - type: dropdown
     id: page
