@@ -415,7 +415,7 @@ a:hover .text-link,
   display: flex;
 }
 .cta h2 {
-  font-size: clamp(65px, 9vw, 150px);
+  font-size: clamp(32.5px, 4.5vw, 75px);
 }
 .cta > a > span {
   font-size: clamp(55px, 7vw, 100px);
@@ -1038,7 +1038,7 @@ select {
     padding-block: 50px;
   }
   .cta h2 {
-    font-size: 68px;
+    font-size: 34px;
   }
   .cta > a {
     padding-bottom: 22px;
