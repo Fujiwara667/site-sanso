@@ -13,6 +13,8 @@ interface Props {
   numero: number;
   photo: ImageMetadata;
   photoAlt: string;
+  typeVisuel?: 'document' | 'signalisation';
+  precision?: string;
   prestations: { titre: string; texte: string }[];
   liens: { href: string; label: string; numero: number }[]; // liens vers les 2 autres métiers
 }
@@ -30,8 +32,20 @@ const code = codes[p.numero - 1];
         <p class="introduction">{p.accroche}</p>
       </div>
     </div>
-    <div class="service-photo">
-      <Image src={p.photo} alt={p.photoAlt} widths={[800, 1400, 1920]} quality={70} sizes="100vw" loading="eager" />
+    <div class:list={['service-photo', p.typeVisuel && `service-photo--${p.typeVisuel}`]}>
+      {p.typeVisuel === 'document' ? (
+        <a
+          class="document-viewer"
+          href={p.photo.src}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Ouvrir le document en pleine résolution"
+        >
+          <Image src={p.photo} alt={p.photoAlt} widths={[800, 1400, 1920]} quality={85} sizes="100vw" loading="eager" />
+        </a>
+      ) : (
+        <Image src={p.photo} alt={p.photoAlt} widths={[800, 1400, 1920]} quality={70} sizes="100vw" loading="eager" />
+      )}
     </div>
   </section>
 
@@ -47,12 +61,13 @@ const code = codes[p.numero - 1];
           <p>{s.texte}</p>
         </div>
       ))}
+      {p.precision && <p class="service-note">{p.precision}</p>}
     </div>
   </section>
 
   <section class="wrap related">
     <div>
-      <h2>Nos autres activités</h2>
+      <h2>Nos autres métiers</h2>
     </div>
     <div>
       {p.liens.map((l) => (
@@ -65,5 +80,5 @@ const code = codes[p.numero - 1];
     </div>
   </section>
 
-  <Cta />
+  <Cta prestation={code} />
 </Base>

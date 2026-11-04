@@ -10,17 +10,17 @@ const metiers = [
   {
     href: '/construction-bois/',
     titre: 'Construction bois',
-    texte: 'Réalisation d’ouvrages neufs et travaux sur l’existant.',
+    texte: 'Construction, rénovation et transformation d’ouvrages en bois.',
   },
   {
     href: '/etude-bois/',
     titre: 'Étude bois',
-    texte: 'Développement technique de vos projets bois.',
+    texte: 'Études, dimensionnements et plans pour les ouvrages en bois.',
   },
   {
     href: '/protection-incendie/',
     titre: 'Protection incendie',
-    texte: 'Protection incendie des bâtiments neufs et existants.',
+    texte: 'Concepts, plans et accompagnement pour les bâtiments neufs et existants.',
   },
 ];
 ---
@@ -51,7 +51,7 @@ const metiers = [
     <div class="hero-photo">
       <Image
         src={photoHero}
-        alt="Levage d’un élément de construction bois sur un chantier au-dessus du Léman"
+        alt="Alignement de lames de bois formant un revêtement"
         widths={[800, 1400, 1920]}
         quality={70}
         sizes="100vw"
@@ -68,7 +68,7 @@ const metiers = [
     <div class="section-heading">
       <div>
         <p class="eyebrow">01 / PRESTATIONS</p>
-        <h2>Nos domaines d’intervention</h2>
+        <h2>Nos métiers</h2>
       </div>
     </div>
     <div class="services-grid">
@@ -92,58 +92,30 @@ const metiers = [
         <p class="eyebrow">02 / ENTREPRISE</p>
         <h2>SANSO CONCEPT</h2>
       </div>
-      <div class="prose">
+      <div class="prose company-overview">
         <p>
-          SANSO CONCEPT réunit trois compétences complémentaires : l’étude technique, la construction bois et la
+          SANSO CONCEPT réalise des travaux de construction bois et prend en charge des mandats d’étude bois et de
           protection incendie.
         </p>
+        <p>Ces prestations peuvent être confiées séparément ou associées selon les besoins du projet.</p>
+      </div>
+      <div class="company-contact">
+        <p class="eyebrow">DIRECTION</p>
+        <h3>Nicolas Sansonnens</h3>
         <p>
-          Notre approche associe la précision de la conception à l’expérience concrète du terrain, avec une même
-          exigence du premier croquis à la réalisation.
+          Technicien ES en construction bois
+          <br />
+          Spécialiste en protection incendie AEAI
         </p>
-        <div class="company-values">
-          <h3>Nos valeurs</h3>
-          <dl>
-            <div>
-              <dt>Précision</dt>
-              <dd>Le souci du détail et la rigueur technique à chaque étape.</dd>
-            </div>
-            <div>
-              <dt>Savoir-faire</dt>
-              <dd>Une connaissance du métier qui relie la réflexion à la pratique.</dd>
-            </div>
-            <div>
-              <dt>Authenticité</dt>
-              <dd>Des échanges directs, une approche transparente et sans artifices.</dd>
-            </div>
-            <div>
-              <dt>Engagement</dt>
-              <dd>Le respect des engagements et le goût du travail bien fait.</dd>
-            </div>
-          </dl>
-        </div>
-        <div class="company-philosophy">
-          <h3>Notre philosophie</h3>
-          <p>
-            Nous croyons aux solutions réfléchies, aux réalisations soignées et à la cohérence entre ce qui est imaginé
-            et ce qui est construit.
-          </p>
-        </div>
-        <div class="company-contact">
-          <p class="eyebrow">DIRECTION</p>
-          <h3>Nicolas Sansonnens</h3>
-          <p>
-            Technicien ES en construction bois
-            <br />
-            Spécialiste en protection incendie AEAI
-          </p>
-          <a class="text-link" href="/contact/">
-            Contactez-nous <span aria-hidden="true">↗</span>
-          </a>
-        </div>
       </div>
     </div>
   </section>
 
+  <section class="wrap home-projects">
+    <p class="eyebrow">PROJETS</p>
+    <a class="text-link" href="/projets/">
+      Voir les projets <span aria-hidden="true">↗</span>
+    </a>
+  </section>
   <Cta />
 </Base>

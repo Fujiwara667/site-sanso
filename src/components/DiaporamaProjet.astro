@@ -1,0 +1,63 @@
+---
+import { Image } from 'astro:assets';
+import type { PhotoProjet } from '../data/projets';
+interface Props {
+  images: PhotoProjet[];
+  titre: string;
+}
+const { images, titre } = Astro.props;
+const plusieurs = images.length > 1;
+---
+
+<div
+  class="project-gallery"
+  data-gallery
+  role="region"
+  aria-roledescription="diaporama"
+  aria-label={`Photographies du projet ${titre}`}
+>
+  <div class="gallery-frame" data-gallery-frame>
+    {images.map((photo, index) => (
+      <div
+        class="gallery-slide"
+        data-slide
+        hidden={index !== 0}
+        role="group"
+        aria-roledescription="diapositive"
+        aria-label={`${index + 1} sur ${images.length}`}
+      >
+        <Image
+          src={photo.src}
+          alt={photo.alt}
+          widths={[480, 800, 1200, 1600]}
+          sizes="(max-width: 850px) calc(100vw - 40px), 60vw"
+          quality={80}
+          loading={index === 0 ? 'eager' : 'lazy'}
+          class:list={[photo.document && 'gallery-document']}
+          style={{ objectPosition: photo.cadrage || '50% 50%' }}
+        />
+      </div>
+    ))}
+  </div>
+  {plusieurs && (
+    <div class="gallery-controls">
+      <button type="button" data-prev aria-label={`Photo précédente — ${titre}`}>
+        <span aria-hidden="true">←</span>
+      </button>
+      <span class="gallery-counter" data-counter aria-live="off">
+        01 / {String(images.length).padStart(2, '0')}
+      </span>
+      <button type="button" data-next aria-label={`Photo suivante — ${titre}`}>
+        <span aria-hidden="true">→</span>
+      </button>
+      <button type="button" data-pause aria-pressed="false" aria-label={`Mettre en pause le diaporama — ${titre}`}>
+        Pause
+      </button>
+    </div>
+  )}
+  <span class="visually-hidden" data-gallery-status role="status" aria-live="polite"></span>
+</div>
+<script>
+  import { initialiserDiaporamas } from '../scripts/diaporamas';
+  initialiserDiaporamas();
+</script>

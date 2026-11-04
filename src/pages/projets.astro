@@ -1,58 +1,21 @@
 ---
-// Page Projets : liste tous les fichiers de src/content/projets/, avec filtres par métier
-import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
-import Cta from '../components/Cta.astro';
-import ProjetCarte from '../components/ProjetCarte.astro';
-
-const projets = (await getCollection('projets'))
-  .filter((p) => !p.data.exemple)
-  .sort((a, b) => a.data.ordre - b.data.ordre);
-const filtres = ['Tous', 'Construction bois', 'Étude bois', 'Protection incendie'];
+import { projets, projetComplet } from '../data/projets';
+import ProjetReference from '../components/ProjetReference.astro';
+const references = projets.filter(projetComplet);
 ---
 
 <Base
   titre="Projets"
-  description="Construction bois, étude bois et protection incendie. Nos références seront présentées prochainement."
+  description="Projets de construction bois, d’étude bois et de protection incendie de SANSO CONCEPT."
 >
   <section class="wrap page-title">
-    <p class="eyebrow">RÉFÉRENCES</p>
-    <h1>Projets</h1>
-    <p>Construction bois, étude bois et protection incendie.</p>
+    <h1>PROJETS</h1>
   </section>
-
-  <section class="wrap projects-page">
-    <div class="filters" aria-label="Filtrer les projets">
-      {filtres.map((f, i) => (
-        <button type="button" data-filtre={f} aria-pressed={i === 0 ? 'true' : 'false'} class={i === 0 ? 'active' : ''}>
-          {f}
-        </button>
-      ))}
-    </div>
-    {projets.length === 0 && <p class="example-note">Nos références seront présentées prochainement.</p>}
-    <div class="project-list">
-      {projets.map((p, i) => (
-        <ProjetCarte projet={p} numero={i + 1} />
-      ))}
-    </div>
+  <section class="wrap references" aria-label="Liste des projets">
+    {references.map((projet) => (
+      <ProjetReference projet={projet} />
+    ))}
+    {references.length === 0 && <p class="projects-empty">Nos références seront présentées prochainement.</p>}
   </section>
-
-  <Cta />
 </Base>
-
-<script>
-  // Filtres : affiche uniquement les projets du métier sélectionné
-  const boutons = document.querySelectorAll<HTMLButtonElement>('.filters button');
-  const projets = document.querySelectorAll<HTMLElement>('.project');
-  boutons.forEach((b) =>
-    b.addEventListener('click', () => {
-      const f = b.dataset.filtre;
-      boutons.forEach((x) => {
-        const actif = x === b;
-        x.classList.toggle('active', actif);
-        x.setAttribute('aria-pressed', String(actif));
-      });
-      projets.forEach((p) => (p.hidden = f !== 'Tous' && p.dataset.categorie !== f));
-    }),
-  );
-</script>

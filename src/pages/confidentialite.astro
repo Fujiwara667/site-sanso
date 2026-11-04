@@ -14,13 +14,14 @@ import e from '../data/entreprise.json';
     <h2>Vos demandes</h2>
     <p>
       Les données transmises via le formulaire de contact (nom ou entreprise, e-mail, téléphone, type de besoin et
-      message) sont utilisées uniquement pour répondre à votre demande et étudier votre projet. Elles ne sont ni vendues
-      ni transmises à des tiers.
+      message) sont utilisées uniquement pour répondre à votre demande et étudier votre projet. Elles ne sont pas
+      vendues.
     </p>
     <h2>Traitement et conservation</h2>
     <p>
-      Le formulaire transmet votre message par e-mail à notre messagerie, hébergée en Suisse par Infomaniak. Aucune
-      donnée du formulaire n’est conservée sur le site lui-même. Les échanges sont conservés le temps nécessaire au
+      Le formulaire est prévu pour transmettre votre demande par e-mail via un envoi SMTP Infomaniak lorsque
+      l’hébergement PHP est configuré. Cet envoi n’est pas disponible sur l’aperçu Netlify. Le code du site n’enregistre
+      pas les messages dans une base de données. Les échanges reçus par e-mail sont conservés le temps nécessaire au
       suivi de votre demande et de l’éventuel mandat.
     </p>
     <h2>Vos droits</h2>
@@ -30,9 +31,9 @@ import e from '../data/entreprise.json';
     </p>
     <h2>Cookies et liens externes</h2>
     <p>
-      Ce site n’utilise aucun cookie, aucun outil publicitaire ni mesure d’audience. Les polices de caractères sont
-      hébergées sur notre serveur. Le lien « Voir l’adresse » ouvre Google Maps, qui applique sa propre politique de
-      confidentialité.
+      Le code du site n’installe aucun cookie et n’intègre aucun outil publicitaire ni mesure d’audience. Les polices de
+      caractères sont chargées depuis le même hébergement que le site. Le lien « Voir l’adresse » ouvre Google Maps, qui
+      applique sa propre politique de confidentialité.
     </p>
   </section>
 </Base>

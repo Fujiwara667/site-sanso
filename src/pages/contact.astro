@@ -68,6 +68,7 @@ const adresseMaps = encodeURIComponent(`${entreprise.adresse} ${entreprise.npa} 
         <label>
           Prestation concernée
           <select name="subject">
+            <option value="">Sélectionner une prestation</option>
             <option>Construction bois</option>
             <option>Étude bois</option>
             <option>Protection incendie</option>
@@ -103,6 +104,11 @@ const adresseMaps = encodeURIComponent(`${entreprise.adresse} ${entreprise.npa} 
   // Envoi du formulaire sans recharger la page + message de confirmation
   const form = document.getElementById('contact-form') as HTMLFormElement | null;
   const statut = form?.querySelector<HTMLElement>('.form-status');
+  const choix = form?.querySelector<HTMLSelectElement>('select[name="subject"]');
+  const prestations: Record<string, string> = { CB: 'Construction bois', EB: 'Étude bois', PI: 'Protection incendie' };
+  const selection = new URLSearchParams(window.location.search).get('prestation') || '';
+  const prestation = prestations[selection] || '';
+  if (choix) choix.value = prestation;
   const champT = form?.querySelector<HTMLInputElement>('input[name="t"]');
   if (champT) champT.value = String(Math.floor(Date.now() / 1000));
 
@@ -134,6 +140,7 @@ const adresseMaps = encodeURIComponent(`${entreprise.adresse} ${entreprise.npa} 
       const data = await rep.json().catch(() => ({}));
       if (!rep.ok || !data.ok) throw new Error(data.message || 'Erreur');
       form.reset();
+      if (choix) choix.value = prestation;
       if (champT) champT.value = String(Math.floor(Date.now() / 1000));
       if (statut) {
         statut.classList.add('ok');

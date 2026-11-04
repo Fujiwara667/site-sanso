@@ -1,6 +1,14 @@
+---
+interface Props {
+  prestation?: string;
+}
+const { prestation } = Astro.props;
+const href = prestation ? `/contact/?prestation=${prestation}` : '/contact/';
+---
+
 <section class="cta wrap">
-  <p class="eyebrow">03 / CONTACT</p>
-  <a href="/contact/">
+  <p class="eyebrow">CONTACT</p>
+  <a href={href}>
     <h2>Contactez-nous</h2>
     <span aria-hidden="true">↗</span>
   </a>
