@@ -1,32 +1,37 @@
 ---
-// Page métier : Étude bois — modifier les textes ci-dessous
 import PageMetier from '../components/PageMetier.astro';
 import photo from '../assets/photos/etude-bois.png';
 ---
 
 <PageMetier
   titre="Étude bois"
-  surtitre="STRUCTURE / DIMENSIONNEMENT / EXÉCUTION"
-  verbe="Étudier."
-  accroche="Le projet se construit avant le chantier."
+  surtitre="02 / NOS MÉTIERS"
+  verbe="Étude bois."
+  accroche="Étude et développement technique de vos projets de construction bois."
   numero={2}
   photo={photo}
-  photoAlt="Illustration de notre savoir-faire : Étude bois"
-  intro="Étude et développement technique des projets de construction bois. Du principe constructif aux plans nécessaires à l’exécution, nous recherchons des solutions cohérentes avec l’architecture, le budget et les contraintes du terrain."
+  photoAlt="Illustration — Étude bois"
+  intro="Nous accompagnons les architectes, les maîtres d’ouvrage et les entreprises dans l’étude de leurs projets bois. Nous définissons les principes constructifs, dimensionnons les structures et préparons les documents nécessaires aux appels d’offres et à l’exécution."
   prestations={[
     {
-      titre: 'Avant-projet',
-      texte: 'Principes constructifs, variantes techniques, faisabilité et prédimensionnement.',
+      titre: 'Conception et faisabilité',
+      texte:
+        'Analyse du projet, définition des principes constructifs, étude de variantes et prédimensionnement des structures.',
     },
     {
       titre: 'Dimensionnement',
-      texte: 'Calcul des éléments de structure bois et vérifications nécessaires au projet.',
+      texte: 'Calcul et vérification des éléments de structure bois et de leurs assemblages.',
     },
     {
       titre: 'Plans et détails',
-      texte: 'Plans de structure, plans d’exécution, détails constructifs et coordination des interfaces.',
+      texte:
+        'Établissement des plans de structure et d’exécution, développement des détails constructifs et coordination avec les autres éléments du bâtiment.',
     },
-    { titre: 'Appels d’offres', texte: 'Métrés, libellés de soumission, appui technique et comparaison des offres.' },
+    {
+      titre: 'Appels d’offres',
+      texte:
+        'Préparation des métrés et des descriptifs de travaux, réponses aux questions techniques et comparaison des offres reçues.',
+    },
   ]}
   liens={[
     { href: '/construction-bois/', label: 'Construction bois' },

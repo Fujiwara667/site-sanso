@@ -21,14 +21,13 @@ interface Props {
 const p = Astro.props;
 ---
 
-<Base titre={p.titre}>
+<Base titre={p.titre} description={p.accroche}>
   <section class="service-hero">
     <div class="wrap service-hero-title">
       <p class="eyebrow">{p.surtitre}</p>
       <h1>{p.verbe}</h1>
       <div class="service-lead">
         <p>{p.accroche}</p>
-        <span class="eyebrow">0{p.numero} / COMPÉTENCE</span>
       </div>
     </div>
     <div class="service-photo">
@@ -37,13 +36,13 @@ const p = Astro.props;
   </section>
 
   <section class="wrap service-intro">
-    <h2>{p.titre}.</h2>
+    <h2>Présentation</h2>
     <p>{p.intro}</p>
   </section>
 
   <section class="peach">
     <div class="wrap prestations">
-      <p class="eyebrow">NOTRE ACCOMPAGNEMENT</p>
+      <h2>Nos prestations</h2>
       {p.prestations.map((s, i) => (
         <div class="prestation">
           <span class="eyebrow">0{i + 1}</span>
@@ -56,12 +55,7 @@ const p = Astro.props;
 
   <section class="wrap related">
     <div>
-      <p class="eyebrow">DU BUREAU AU CHANTIER</p>
-      <h2>
-        Penser l’ensemble.
-        <br />
-        Soigner le détail.
-      </h2>
+      <h2>Nos autres métiers</h2>
     </div>
     <div>
       {p.liens.map((l) => (

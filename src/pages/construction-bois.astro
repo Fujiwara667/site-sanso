@@ -1,25 +1,35 @@
 ---
-// Page métier : Construction bois — modifier les textes ci-dessous
 import PageMetier from '../components/PageMetier.astro';
 import photo from '../assets/photos/construction-bois.jpg';
 ---
 
 <PageMetier
   titre="Construction bois"
-  surtitre="CHARPENTE / OSSATURE / RÉNOVATION"
-  verbe="Construire."
-  accroche="Construire avec le bois. Transformer avec justesse."
+  surtitre="01 / NOS MÉTIERS"
+  verbe="Construction bois."
+  accroche="Construction, rénovation et transformation en bois."
   numero={1}
   photo={photo}
-  photoAlt="Illustration de notre savoir-faire : Construction bois"
-  intro="Construction, rénovation et transformation de bâtiments en bois. Nous intervenons sur la structure, la toiture et l’enveloppe, avec une attention particulière aux détails et à la qualité d’exécution."
+  photoAlt="Illustration — Construction bois"
+  intro="Nous réalisons des travaux de charpente, d’ossature bois, de toiture et d’enveloppe. Nous intervenons sur les constructions neuves et les bâtiments existants, pour des travaux de rénovation, de transformation ou d’agrandissement."
   prestations={[
-    { titre: 'Construction', texte: 'Ossatures bois, charpentes, extensions, couverts, cabanons et terrasses.' },
-    { titre: 'Rénovation', texte: 'Toitures, charpentes existantes, isolation et fenêtres de toit.' },
-    { titre: 'Transformation', texte: 'Surélévations, modifications de structures et transformations de toiture.' },
     {
-      titre: 'Enveloppe',
-      texte: 'Isolation et étanchéité de toiture et de façade, bardages et revêtements intérieurs et extérieurs.',
+      titre: 'Construction',
+      texte: 'Réalisation de charpentes, d’ossatures bois, d’extensions, de couverts, de cabanons et de terrasses.',
+    },
+    {
+      titre: 'Rénovation',
+      texte: 'Rénovation de toitures et de charpentes existantes, travaux d’isolation et pose de fenêtres de toit.',
+    },
+    {
+      titre: 'Transformation',
+      texte:
+        'Surélévations, modifications de structures et transformations de toiture pour adapter le bâtiment à de nouveaux besoins.',
+    },
+    {
+      titre: 'Enveloppe et revêtements',
+      texte:
+        'Isolation et étanchéité de toiture et de façade. Pose de bardages et de revêtements intérieurs et extérieurs.',
     },
   ]}
   liens={[

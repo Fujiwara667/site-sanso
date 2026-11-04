@@ -313,7 +313,7 @@ a:hover .text-link,
 }
 .approach {
   background: var(--peach);
-  padding-top: 80px;
+  padding-block: 80px;
   overflow: hidden;
 }
 .approach-grid {
@@ -509,7 +509,7 @@ footer {
 .prestations {
   padding-block: 55px 65px;
 }
-.prestations > .eyebrow {
+.prestations > h2 {
   margin-bottom: 35px;
 }
 .prestation {
@@ -718,8 +718,7 @@ select {
   font-size: 10px;
 }
 .honeypot {
-  position: absolute;
-  left: -10000px;
+  display: none;
 }
 .legal {
   max-width: 900px;
@@ -1038,7 +1037,8 @@ select {
     padding-bottom: 22px;
   }
   .footer-top {
-    gap: 30px;
+    column-gap: clamp(12px, 4vw, 30px);
+    row-gap: 30px;
     padding-bottom: 40px;
   }
   .footer-top img {
@@ -1081,7 +1081,7 @@ select {
   }
   .service-hero-title h1 {
     margin-block: 25px;
-    font-size: 18vw;
+    font-size: clamp(42px, 11vw, 66px);
   }
   .service-lead {
     display: block;

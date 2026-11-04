@@ -10,11 +10,14 @@ const contientExemples = projets.some((p) => p.data.exemple);
 const filtres = ['Tous', 'Construction bois', 'Étude bois', 'Protection incendie'];
 ---
 
-<Base titre="Projets">
+<Base
+  titre="Projets"
+  description="Construction bois, étude bois et protection incendie. Nos références seront ajoutées prochainement."
+>
   <section class="wrap page-title">
-    <p class="eyebrow">03 / EXPLORER</p>
+    <p class="eyebrow">NOS PROJETS</p>
     <h1>Projets.</h1>
-    <p>Des idées qui prennent forme.</p>
+    <p>Construction bois, étude bois et protection incendie.</p>
   </section>
 
   <section class="wrap projects-page">
@@ -27,7 +30,8 @@ const filtres = ['Tous', 'Construction bois', 'Étude bois', 'Protection incendi
     </div>
     {contientExemples && (
       <p class="example-note">
-        Les projets ci-dessous sont des exemples de présentation. Nos références seront ajoutées prochainement.
+        Nos références seront ajoutées prochainement. Les présentations ci-dessous sont des exemples et ne correspondent
+        pas à des mandats réalisés.
       </p>
     )}
     <div class="project-list">

@@ -4,9 +4,9 @@ import Base from '../layouts/Base.astro';
 import e from '../data/entreprise.json';
 ---
 
-<Base titre="Confidentialité">
+<Base titre="Politique de confidentialité">
   <section class="wrap legal">
-    <h1>Confidentialité.</h1>
+    <h1>Politique de confidentialité.</h1>
     <h2>Responsable du traitement</h2>
     <p>
       {e.raisonSociale}, {e.adresse}, {e.npa} {e.localite} — <a href={`mailto:${e.email}`}>{e.email}</a>.
@@ -31,7 +31,7 @@ import e from '../data/entreprise.json';
     <h2>Cookies et liens externes</h2>
     <p>
       Ce site n’utilise aucun cookie, aucun outil publicitaire ni mesure d’audience. Les polices de caractères sont
-      hébergées sur notre serveur. Le lien « Nous situer » ouvre Google Maps, qui applique sa propre politique de
+      hébergées sur notre serveur. Le lien « Voir l’adresse » ouvre Google Maps, qui applique sa propre politique de
       confidentialité.
     </p>
   </section>
