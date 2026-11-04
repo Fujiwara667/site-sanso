@@ -1005,13 +1005,14 @@ textarea {
   color: var(--peach);
 }
 .hero-top > div:first-child {
-  display: contents;
+  display: block;
 }
 .hero-top > div:first-child > .eyebrow {
   grid-column: 1 / -1;
   max-width: none;
-  text-align: center;
-  margin-bottom: var(--space-2);
+  text-align: left;
+  margin-top: var(--space-3);
+  margin-bottom: 0;
 }
 .hero-top h1 {
   grid-column: span 7;
@@ -1040,7 +1041,7 @@ textarea {
   letter-spacing: -0.025em;
 }
 .services-grid {
-  border-top: 3px solid var(--peach);
+  border-top: var(--rule);
 }
 .prestation > .eyebrow {
   color: var(--coal);
@@ -1064,7 +1065,7 @@ textarea {
 }
 .approach {
   background: var(--cream);
-  border-top: 3px solid var(--peach);
+  border-top: var(--rule);
   border-bottom: 0;
 }
 .company-contact {
@@ -1079,7 +1080,7 @@ textarea {
   margin-top: var(--space-3);
 }
 .cta > a {
-  border-bottom: 3px solid var(--peach);
+  border-bottom: var(--rule);
 }
 @media (max-width: 850px) {
   .hero-top h1 {
@@ -1112,5 +1113,35 @@ textarea {
   .service-card h3,
   .prestation h3 {
     font-size: 20px;
+  }
+}
+
+/* Intitulés techniques en capitales ; la signature conserve Aptos. */
+h2,
+h3,
+.service-heading h1 {
+  font-family: var(--font-tech);
+  font-weight: 400;
+  text-transform: uppercase;
+  line-height: 1.25;
+  letter-spacing: -0.025em;
+}
+.service-heading h1 {
+  font-size: clamp(48px, 4.5vw, 64px);
+}
+@media (max-width: 850px) {
+  .hero-top > div:first-child {
+    grid-column: 1 / -1;
+  }
+}
+@media (max-width: 600px) {
+  .service-heading h1 {
+    font-size: clamp(32px, 9vw, 40px);
+  }
+  h2 {
+    font-size: 28px;
+  }
+  .prestation {
+    grid-template-columns: 64px minmax(0, 1fr);
   }
 }

@@ -17,6 +17,8 @@ interface Props {
   liens: { href: string; label: string; numero: number }[]; // liens vers les 2 autres métiers
 }
 const p = Astro.props;
+const codes = ['CB', 'EB', 'PI'];
+const code = codes[p.numero - 1];
 ---
 
 <Base titre={p.titre} description={p.accroche}>
@@ -39,7 +41,7 @@ const p = Astro.props;
       {p.prestations.map((s, i) => (
         <div class="prestation">
           <span class="eyebrow">
-            01-0{p.numero}-0{i + 1}
+            {code}-0{i + 1}
           </span>
           <h3>{s.titre}</h3>
           <p>{s.texte}</p>
@@ -50,12 +52,12 @@ const p = Astro.props;
 
   <section class="wrap related">
     <div>
-      <h2>Nos autres métiers</h2>
+      <h2>Nos autres activités</h2>
     </div>
     <div>
       {p.liens.map((l) => (
         <a href={l.href}>
-          <span class="eyebrow">01-0{l.numero}</span>
+          <span class="eyebrow">{codes[l.numero - 1]}</span>
           <span>{l.label}</span>
           <span aria-hidden="true">↗</span>
         </a>

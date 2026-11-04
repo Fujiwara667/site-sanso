@@ -5,11 +5,12 @@ import Base from '../layouts/Base.astro';
 import Cta from '../components/Cta.astro';
 import photoHero from '../assets/photos/accueil-chantier-leman.jpg';
 
+const codes = ['CB', 'EB', 'PI'];
 const metiers = [
   {
     href: '/construction-bois/',
     titre: 'Construction bois',
-    texte: 'Construction, rénovation, transformation : ossature bois, charpente, enveloppe et revêtements.',
+    texte: 'Construction, rénovation et transformation d’ouvrages en bois.',
   },
   {
     href: '/etude-bois/',
@@ -26,21 +27,21 @@ const metiers = [
 
 <Base
   titre="Étudier. Construire."
-  description="Construction, rénovation et transformation en bois. Études techniques et protection incendie, de l’avant-projet au suivi des travaux."
+  description="Nous réalisons vos travaux de construction, de rénovation et de transformation en bois. Nous prenons également en charge vos études bois et vos mandats de protection incendie."
 >
   <section class="home-hero">
     <div class="hero-top wrap">
       <div>
-        <p class="eyebrow">CONSTRUCTION BOIS / ÉTUDE BOIS / PROTECTION INCENDIE</p>
         <h1>
           <span>Étudier.</span>
           <span>Construire.</span>
         </h1>
+        <p class="eyebrow">CONSTRUCTION BOIS / ÉTUDE BOIS / PROTECTION INCENDIE</p>
       </div>
       <div class="hero-note">
         <p>
-          Construction, rénovation et transformation en bois. Études techniques et protection incendie, de
-          l’avant-projet au suivi des travaux.
+          Nous réalisons vos travaux de construction, de rénovation et de transformation en bois. Nous prenons également
+          en charge vos études bois et vos mandats de protection incendie.
         </p>
         <a class="text-link" href="/contact/">
           Contactez-nous <span aria-hidden="true">↗</span>
@@ -74,7 +75,7 @@ const metiers = [
       {metiers.map((m, i) => (
         <a class="service-card" href={m.href}>
           <div class="card-top">
-            <span class="eyebrow">01-0{i + 1}</span>
+            <span class="eyebrow">{codes[i]}</span>
             <span aria-hidden="true">↗</span>
           </div>
           <h3>{m.titre}</h3>
@@ -93,23 +94,26 @@ const metiers = [
       </div>
       <div class="prose">
         <p>
-          Basé à Puidoux, SANSO CONCEPT est une entreprise de construction bois et un bureau d’étude bois et de
-          protection incendie. Nous intervenons en Suisse romande auprès des particuliers, des architectes et des
-          entreprises.
+          SANSO CONCEPT réalise des ouvrages en bois, de la construction neuve à la rénovation et à la transformation.
+          Basés à Puidoux, nous intervenons sur les chantiers en Suisse romande auprès des particuliers, des architectes
+          et des entreprises.
         </p>
         <p>
-          Nous réalisons des travaux de construction, de rénovation et de transformation. Notre bureau prépare les
-          avant-projets, les dossiers d’appels d’offres, les calculs de structure et les plans nécessaires à leur
-          exécution.
+          Nous exécutons les travaux d’ossature bois, de charpente, d’enveloppe et de revêtements intérieurs et
+          extérieurs. Nous intervenons aussi sur les structures existantes pour les adapter, les renforcer ou les
+          agrandir.
         </p>
         <p>
-          En protection incendie, nous assurons le conseil et le suivi technique, les mandats d’assurance qualité ainsi
-          que le contrôle de l’existant et la définition des mesures de mise en conformité. Ces prestations concernent
-          tous types de bâtiments.
+          En parallèle de la réalisation des travaux, notre bureau prépare les avant-projets, les dossiers d’appels
+          d’offres, les dimensionnements et les plans d’exécution. Nous assurons également les mandats de conseil,
+          d’assurance qualité et de mise en conformité en protection incendie.
         </p>
-        <p>Les trois activités peuvent être confiées séparément ou réunies dans un même mandat.</p>
+        <p>
+          Vous pouvez nous confier la réalisation des travaux, une étude technique ou un mandat de protection incendie,
+          séparément ou dans le cadre d’un même projet.
+        </p>
         <div class="company-contact">
-          <p class="eyebrow">02-01 / DIRECTION</p>
+          <p class="eyebrow">DIRECTION</p>
           <h3>Nicolas Sansonnens</h3>
           <p>
             Technicien ES en construction bois
