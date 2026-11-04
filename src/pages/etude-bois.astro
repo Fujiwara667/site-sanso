@@ -5,36 +5,31 @@ import photo from '../assets/photos/etude-bois.png';
 
 <PageMetier
   titre="Étude bois"
-  surtitre="02 / NOS MÉTIERS"
-  verbe="Étude bois."
-  accroche="Étude et développement technique de vos projets de construction bois."
+  surtitre="02 / MÉTIER"
+  accroche="Nous concevons et dimensionnons les ouvrages en bois, de l’étude de faisabilité aux plans d’exécution."
   numero={2}
   photo={photo}
   photoAlt="Illustration — Étude bois"
-  intro="Nous accompagnons les architectes, les maîtres d’ouvrage et les entreprises dans l’étude de leurs projets bois. Nous définissons les principes constructifs, dimensionnons les structures et préparons les documents nécessaires aux appels d’offres et à l’exécution."
   prestations={[
     {
       titre: 'Conception et faisabilité',
-      texte:
-        'Analyse du projet, définition des principes constructifs, étude de variantes et prédimensionnement des structures.',
+      texte: 'Analyse du projet, définition des principes constructifs, étude de variantes et prédimensionnement.',
     },
     {
       titre: 'Dimensionnement',
-      texte: 'Calcul et vérification des éléments de structure bois et de leurs assemblages.',
+      texte: 'Calcul des structures bois, vérification des éléments existants et dimensionnement des assemblages.',
     },
     {
       titre: 'Plans et détails',
-      texte:
-        'Établissement des plans de structure et d’exécution, développement des détails constructifs et coordination avec les autres éléments du bâtiment.',
+      texte: 'Plans de structure et d’exécution, détails constructifs et coordination technique.',
     },
     {
       titre: 'Appels d’offres',
-      texte:
-        'Préparation des métrés et des descriptifs de travaux, réponses aux questions techniques et comparaison des offres reçues.',
+      texte: 'Métrés, descriptifs des travaux et analyse des offres pour la préparation de l’adjudication.',
     },
   ]}
   liens={[
-    { href: '/construction-bois/', label: 'Construction bois' },
-    { href: '/protection-incendie/', label: 'Protection incendie' },
+    { numero: 1, href: '/construction-bois/', label: 'Construction bois' },
+    { numero: 3, href: '/protection-incendie/', label: 'Protection incendie' },
   ]}
 />

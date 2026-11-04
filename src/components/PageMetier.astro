@@ -9,14 +9,12 @@ import Cta from './Cta.astro';
 interface Props {
   titre: string; // ex. « Construction bois »
   surtitre: string; // petite ligne en capitales au-dessus du grand titre
-  verbe: string; // grand titre, ex. « Construire. »
   accroche: string;
   numero: number;
   photo: ImageMetadata;
   photoAlt: string;
-  intro: string;
   prestations: { titre: string; texte: string }[];
-  liens: { href: string; label: string }[]; // liens vers les 2 autres métiers
+  liens: { href: string; label: string; numero: number }[]; // liens vers les 2 autres métiers
 }
 const p = Astro.props;
 ---
@@ -25,9 +23,9 @@ const p = Astro.props;
   <section class="service-hero">
     <div class="wrap service-hero-title">
       <p class="eyebrow">{p.surtitre}</p>
-      <h1>{p.verbe}</h1>
-      <div class="service-lead">
-        <p>{p.accroche}</p>
+      <div class="service-heading">
+        <h1>{p.titre}</h1>
+        <p class="introduction">{p.accroche}</p>
       </div>
     </div>
     <div class="service-photo">
@@ -35,14 +33,9 @@ const p = Astro.props;
     </div>
   </section>
 
-  <section class="wrap service-intro">
-    <h2>Présentation</h2>
-    <p>{p.intro}</p>
-  </section>
-
-  <section class="peach">
+  <section>
     <div class="wrap prestations">
-      <h2>Nos prestations</h2>
+      <h2>Prestations</h2>
       {p.prestations.map((s, i) => (
         <div class="prestation">
           <span class="eyebrow">0{i + 1}</span>
@@ -60,6 +53,7 @@ const p = Astro.props;
     <div>
       {p.liens.map((l) => (
         <a href={l.href}>
+          <span class="eyebrow">0{l.numero}</span>
           <span>{l.label}</span>
           <span aria-hidden="true">↗</span>
         </a>

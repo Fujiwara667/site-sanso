@@ -11,50 +11,46 @@ const adresseMaps = encodeURIComponent(`${entreprise.adresse} ${entreprise.npa} 
 >
   <section class="wrap page-title">
     <p class="eyebrow">CONTACT</p>
-    <h1>Contact.</h1>
+    <h1>Contact</h1>
+    <p class="introduction">Pour vos demandes de travaux, d’étude bois ou de protection incendie.</p>
   </section>
 
-  <section class="peach">
-    <div class="wrap contact-details">
-      <div>
-        <p class="eyebrow">PUIDOUX / SUISSE ROMANDE</p>
-        <p class="contact-area">
-          Pour une demande de travaux, une étude bois ou un mandat de protection incendie, contactez-nous par téléphone,
-          par e-mail ou avec le formulaire ci-dessous. Nous intervenons principalement sur l’arc lémanique et dans les
-          régions voisines de Suisse romande.
-        </p>
-        <a
-          class="text-link"
-          target="_blank"
-          rel="noreferrer"
-          href={`https://www.google.com/maps/search/?api=1&query=${adresseMaps}`}
-        >
-          Voir l’adresse <span aria-hidden="true">↗</span>
-        </a>
-      </div>
-      <div>
-        <a class="contact-email" href={`mailto:${entreprise.email}`}>
-          {entreprise.email}
-        </a>
-        <a class="contact-phone" href={`tel:${entreprise.telephoneLien}`}>
-          {entreprise.telephone}
-        </a>
-        <p>
-          {entreprise.adresse}
-          <br />
-          {entreprise.npa} {entreprise.localite}
-        </p>
-      </div>
+  <section class="wrap contact-details" aria-label="Coordonnées">
+    <div>
+      <p class="eyebrow">E-mail</p>
+      <a class="contact-email" href={`mailto:${entreprise.email}`}>
+        {entreprise.email}
+      </a>
+    </div>
+    <div>
+      <p class="eyebrow">Téléphone</p>
+      <a class="contact-phone" href={`tel:${entreprise.telephoneLien}`}>
+        {entreprise.telephone}
+      </a>
+    </div>
+    <div>
+      <p class="eyebrow">Adresse</p>
+      <p>
+        {entreprise.adresse}
+        <br />
+        {entreprise.npa} {entreprise.localite}
+      </p>
+      <a
+        class="text-link"
+        target="_blank"
+        rel="noreferrer"
+        href={`https://www.google.com/maps/search/?api=1&query=${adresseMaps}`}
+      >
+        Voir l’adresse <span aria-hidden="true">↗</span>
+      </a>
     </div>
   </section>
-
   <section class="wrap form-section">
     <div>
-      <p class="eyebrow">VOTRE DEMANDE</p>
-      <h2>Envoyez-nous un message.</h2>
+      <h2>Votre demande</h2>
       <p>
-        Décrivez votre besoin et indiquez le lieu du projet. Vous pouvez transmettre vos plans et documents directement
-        à info@sanso-concept.ch.
+        Indiquez la prestation souhaitée, le lieu du projet et les travaux envisagés. Vous pouvez transmettre vos plans
+        et documents par e-mail.
       </p>
     </div>
     <form id="contact-form" action="/contact.php" method="post">
@@ -98,9 +94,6 @@ const adresseMaps = encodeURIComponent(`${entreprise.adresse} ${entreprise.npa} 
       <button class="button" type="submit">
         Envoyer le message
       </button>
-      <p class="small">
-        Contact direct : <a href={`mailto:${entreprise.email}`}>{entreprise.email}</a> · {entreprise.telephone}
-      </p>
       <p class="form-status" role="status" aria-live="polite"></p>
     </form>
   </section>
