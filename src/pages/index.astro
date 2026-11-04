@@ -1,39 +1,32 @@
 ---
 // Page d'accueil
 import { Image } from 'astro:assets';
-import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import Cta from '../components/Cta.astro';
-import ProjetCarte from '../components/ProjetCarte.astro';
 import photoHero from '../assets/photos/accueil-chantier-leman.jpg';
-
-// Projets marqués « accueil: true », triés par ordre
-const projets = (await getCollection('projets'))
-  .filter((p) => p.data.accueil && !p.data.exemple)
-  .sort((a, b) => a.data.ordre - b.data.ordre);
 
 const metiers = [
   {
     href: '/construction-bois/',
     titre: 'Construction bois',
-    texte: 'Charpente, toiture, ossature bois, isolation et revêtements.',
+    texte: 'Construction, rénovation, transformation : ossature bois, charpente, enveloppe et revêtements.',
   },
   {
     href: '/etude-bois/',
     titre: 'Étude bois',
-    texte: 'Conception, dimensionnement, plans et appels d’offres.',
+    texte: 'Avant-projets, conception, dossiers d’appels d’offres, dimensionnement et plans.',
   },
   {
     href: '/protection-incendie/',
     titre: 'Protection incendie',
-    texte: 'Conseil, concepts, plans et assurance qualité.',
+    texte: 'Conseil et suivi technique, assurance qualité et mise en conformité des bâtiments.',
   },
 ];
 ---
 
 <Base
   titre="Étudier. Construire."
-  description="SANSO CONCEPT réunit la construction bois, l’étude bois et la protection incendie. Basés à Puidoux, nous intervenons en Suisse romande."
+  description="Construction, rénovation et transformation en bois. Études techniques et protection incendie, de l’avant-projet au suivi des travaux."
 >
   <section class="home-hero">
     <div class="hero-top wrap">
@@ -46,8 +39,8 @@ const metiers = [
       </div>
       <div class="hero-note">
         <p>
-          SANSO CONCEPT réunit la construction bois, l’étude bois et la protection incendie. Basés à Puidoux, nous
-          intervenons en Suisse romande.
+          Construction, rénovation et transformation en bois. Études techniques et protection incendie, de
+          l’avant-projet au suivi des travaux.
         </p>
         <a class="text-link" href="/contact/">
           Contactez-nous <span aria-hidden="true">↗</span>
@@ -73,15 +66,15 @@ const metiers = [
   <section class="expertise wrap">
     <div class="section-heading">
       <div>
-        <p class="eyebrow">01 / MÉTIERS</p>
-        <h2>Nos métiers</h2>
+        <p class="eyebrow">01 / PRESTATIONS</p>
+        <h2>Nos domaines d’intervention</h2>
       </div>
     </div>
     <div class="services-grid">
       {metiers.map((m, i) => (
         <a class="service-card" href={m.href}>
           <div class="card-top">
-            <span class="eyebrow">0{i + 1}</span>
+            <span class="eyebrow">01-0{i + 1}</span>
             <span aria-hidden="true">↗</span>
           </div>
           <h3>{m.titre}</h3>
@@ -92,42 +85,44 @@ const metiers = [
     </div>
   </section>
 
-  <section class="approach">
+  <section class="approach" id="a-propos">
     <div class="wrap approach-grid">
       <div>
         <p class="eyebrow">02 / ENTREPRISE</p>
         <h2>SANSO CONCEPT</h2>
       </div>
-      <div>
+      <div class="prose">
         <p>
-          Nous concevons les ouvrages en bois et réalisons les travaux. Nous assurons également des mandats de
-          protection incendie pour tous types de bâtiments.
+          Basé à Puidoux, SANSO CONCEPT est une entreprise de construction bois et un bureau d’étude bois et de
+          protection incendie. Nous intervenons en Suisse romande auprès des particuliers, des architectes et des
+          entreprises.
         </p>
-        <p>Ces prestations peuvent être confiées séparément ou réunies dans un même mandat.</p>
-        <a class="text-link" href="/a-propos/">
-          À propos <span aria-hidden="true">↗</span>
-        </a>
+        <p>
+          Nous réalisons des travaux de construction, de rénovation et de transformation. Notre bureau prépare les
+          avant-projets, les dossiers d’appels d’offres, les calculs de structure et les plans nécessaires à leur
+          exécution.
+        </p>
+        <p>
+          En protection incendie, nous assurons le conseil et le suivi technique, les mandats d’assurance qualité ainsi
+          que le contrôle de l’existant et la définition des mesures de mise en conformité. Ces prestations concernent
+          tous types de bâtiments.
+        </p>
+        <p>Les trois activités peuvent être confiées séparément ou réunies dans un même mandat.</p>
+        <div class="company-contact">
+          <p class="eyebrow">02-01 / DIRECTION</p>
+          <h3>Nicolas Sansonnens</h3>
+          <p>
+            Technicien ES en construction bois
+            <br />
+            Spécialiste en protection incendie AEAI
+          </p>
+          <a class="text-link" href="/contact/">
+            Contactez-nous <span aria-hidden="true">↗</span>
+          </a>
+        </div>
       </div>
     </div>
   </section>
 
-  {projets.length > 0 && (
-    <section class="wrap selected">
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">03 / PROJETS</p>
-          <h2>Projets</h2>
-        </div>
-        <a class="text-link" href="/projets/">
-          Voir les projets <span aria-hidden="true">↗</span>
-        </a>
-      </div>
-      <div class="project-list">
-        {projets.map((p, i) => (
-          <ProjetCarte projet={p} numero={i + 1} />
-        ))}
-      </div>
-    </section>
-  )}
   <Cta />
 </Base>

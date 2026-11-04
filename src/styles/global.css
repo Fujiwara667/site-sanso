@@ -999,3 +999,118 @@ textarea {
     transition: none;
   }
 }
+
+/* Retouches communes : hiérarchie technique et accents SANSO. */
+.hero-top h1 span:last-child {
+  color: var(--peach);
+}
+.hero-top > div:first-child {
+  display: contents;
+}
+.hero-top > div:first-child > .eyebrow {
+  grid-column: 1 / -1;
+  max-width: none;
+  text-align: center;
+  margin-bottom: var(--space-2);
+}
+.hero-top h1 {
+  grid-column: span 7;
+}
+.desktop-nav .nav-services {
+  margin-inline: auto;
+  justify-content: center;
+}
+.desktop-nav > div:last-child {
+  margin-left: var(--space-4);
+}
+.eyebrow {
+  font-variant-numeric: tabular-nums;
+}
+.card-top > .eyebrow,
+.service-hero-title > .eyebrow {
+  border-left: 3px solid var(--peach);
+  padding-left: var(--space-2);
+}
+.service-card h3,
+.prestation h3 {
+  font-family: var(--font-tech);
+  font-size: clamp(19px, 1.5vw, 22px);
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: -0.025em;
+}
+.services-grid {
+  border-top: 3px solid var(--peach);
+}
+.prestation > .eyebrow {
+  color: var(--coal);
+  background: var(--peach);
+  align-self: start;
+  justify-self: start;
+  padding: 6px 8px;
+  letter-spacing: 0;
+}
+.prestation > .eyebrow {
+  grid-column: span 2;
+}
+.prestation h3 {
+  grid-column: span 4;
+}
+.prestation p {
+  grid-column: 7 / -1;
+}
+.related a {
+  grid-template-columns: 64px 1fr auto;
+}
+.approach {
+  background: var(--cream);
+  border-top: 3px solid var(--peach);
+  border-bottom: 0;
+}
+.company-contact {
+  margin-top: var(--space-5);
+  padding: var(--space-4);
+  background: var(--peach);
+}
+.company-contact h3 {
+  margin-block: var(--space-2);
+}
+.company-contact .text-link {
+  margin-top: var(--space-3);
+}
+.cta > a {
+  border-bottom: 3px solid var(--peach);
+}
+@media (max-width: 850px) {
+  .hero-top h1 {
+    grid-column: 1 / -1;
+  }
+  .hero-note {
+    grid-column: 1 / 11;
+  }
+}
+@media (max-width: 600px) {
+  .hero-top h1,
+  .hero-note {
+    grid-column: 1 / -1;
+  }
+  .prestation {
+    grid-template-columns: 80px minmax(0, 1fr);
+  }
+  .prestation > .eyebrow {
+    grid-column: 1;
+  }
+  .prestation h3 {
+    grid-column: 2;
+  }
+  .prestation p {
+    grid-column: 1 / -1;
+  }
+  .prestation > .eyebrow {
+    margin-bottom: 0;
+  }
+  .service-card h3,
+  .prestation h3 {
+    font-size: 20px;
+  }
+}

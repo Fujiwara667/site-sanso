@@ -38,7 +38,9 @@ const p = Astro.props;
       <h2>Prestations</h2>
       {p.prestations.map((s, i) => (
         <div class="prestation">
-          <span class="eyebrow">0{i + 1}</span>
+          <span class="eyebrow">
+            01-0{p.numero}-0{i + 1}
+          </span>
           <h3>{s.titre}</h3>
           <p>{s.texte}</p>
         </div>
@@ -53,7 +55,7 @@ const p = Astro.props;
     <div>
       {p.liens.map((l) => (
         <a href={l.href}>
-          <span class="eyebrow">0{l.numero}</span>
+          <span class="eyebrow">01-0{l.numero}</span>
           <span>{l.label}</span>
           <span aria-hidden="true">↗</span>
         </a>
