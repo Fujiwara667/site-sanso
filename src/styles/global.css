@@ -1174,3 +1174,38 @@ h3,
 .footer-bottom > div {
   justify-content: center;
 }
+
+/* Présentation de l’entreprise : valeurs et philosophie fournies par SANSO. */
+.company-values,
+.company-philosophy {
+  margin-top: var(--space-5);
+}
+.company-values h3,
+.company-philosophy h3 {
+  margin-bottom: var(--space-3);
+}
+.company-values dl {
+  margin: 0;
+}
+.company-values dl > div {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  gap: var(--space-3);
+  padding-block: var(--space-2);
+  border-top: var(--rule);
+}
+.company-values dt {
+  font-family: var(--font-tech);
+  font-size: var(--action-size);
+  text-transform: uppercase;
+  padding-top: 4px;
+}
+.company-values dd {
+  margin: 0;
+}
+@media (max-width: 600px) {
+  .company-values dl > div {
+    grid-template-columns: 1fr;
+    gap: var(--space-1);
+  }
+}
