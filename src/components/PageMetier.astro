@@ -9,63 +9,70 @@ import Cta from './Cta.astro';
 interface Props {
   titre: string; // ex. « Construction bois »
   surtitre: string; // petite ligne en capitales au-dessus du grand titre
-  verbe: string; // grand titre, ex. « Construire. »
   accroche: string;
   numero: number;
   photo: ImageMetadata;
   photoAlt: string;
-  intro: string;
+  typeVisuel?: 'document' | 'signalisation';
+  precision?: string;
   prestations: { titre: string; texte: string }[];
-  liens: { href: string; label: string }[]; // liens vers les 2 autres métiers
+  liens: { href: string; label: string; numero: number }[]; // liens vers les 2 autres métiers
 }
 const p = Astro.props;
+const codes = ['CB', 'EB', 'PI'];
+const code = codes[p.numero - 1];
 ---
 
-<Base titre={p.titre}>
+<Base titre={p.titre} description={p.accroche}>
   <section class="service-hero">
     <div class="wrap service-hero-title">
       <p class="eyebrow">{p.surtitre}</p>
-      <h1>{p.verbe}</h1>
-      <div class="service-lead">
-        <p>{p.accroche}</p>
-        <span class="eyebrow">0{p.numero} / COMPÉTENCE</span>
+      <div class="service-heading">
+        <h1>{p.titre}</h1>
+        <p class="introduction">{p.accroche}</p>
       </div>
     </div>
-    <div class="service-photo">
-      <Image src={p.photo} alt={p.photoAlt} widths={[800, 1400, 1920]} quality={70} sizes="100vw" loading="eager" />
+    <div class:list={['service-photo', p.typeVisuel && `service-photo--${p.typeVisuel}`]}>
+      {p.typeVisuel === 'document' ? (
+        <a
+          class="document-viewer"
+          href={p.photo.src}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Ouvrir le document en pleine résolution"
+        >
+          <Image src={p.photo} alt={p.photoAlt} widths={[800, 1400, 1920]} quality={85} sizes="100vw" loading="eager" />
+        </a>
+      ) : (
+        <Image src={p.photo} alt={p.photoAlt} widths={[800, 1400, 1920]} quality={70} sizes="100vw" loading="eager" />
+      )}
     </div>
   </section>
 
-  <section class="wrap service-intro">
-    <h2>{p.titre}.</h2>
-    <p>{p.intro}</p>
-  </section>
-
-  <section class="peach">
+  <section>
     <div class="wrap prestations">
-      <p class="eyebrow">NOTRE ACCOMPAGNEMENT</p>
+      <h2>Prestations</h2>
       {p.prestations.map((s, i) => (
         <div class="prestation">
-          <span class="eyebrow">0{i + 1}</span>
+          <span class="eyebrow">
+            {code}-0{i + 1}
+          </span>
           <h3>{s.titre}</h3>
           <p>{s.texte}</p>
         </div>
       ))}
+      {p.precision && <p class="service-note">{p.precision}</p>}
     </div>
   </section>
 
   <section class="wrap related">
     <div>
-      <p class="eyebrow">DU BUREAU AU CHANTIER</p>
-      <h2>
-        Penser l’ensemble.
-        <br />
-        Soigner le détail.
-      </h2>
+      <h2>Nos autres métiers</h2>
     </div>
     <div>
       {p.liens.map((l) => (
         <a href={l.href}>
+          <span class="eyebrow">{codes[l.numero - 1]}</span>
           <span>{l.label}</span>
           <span aria-hidden="true">↗</span>
         </a>
@@ -73,5 +80,5 @@ const p = Astro.props;
     </div>
   </section>
 
-  <Cta />
+  <Cta prestation={code} />
 </Base>

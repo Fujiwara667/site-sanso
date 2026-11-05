@@ -1,29 +1,38 @@
 ---
-// Page métier : Construction bois — modifier les textes ci-dessous
 import PageMetier from '../components/PageMetier.astro';
 import photo from '../assets/photos/construction-bois.jpg';
 ---
 
 <PageMetier
   titre="Construction bois"
-  surtitre="CHARPENTE / OSSATURE / RÉNOVATION"
-  verbe="Construire."
-  accroche="Construire avec le bois. Transformer avec justesse."
+  surtitre="CB / PRESTATIONS"
+  accroche="Nous réalisons vos travaux de construction, de rénovation et de transformation en bois, de la structure aux revêtements."
   numero={1}
   photo={photo}
-  photoAlt="Illustration de notre savoir-faire : Construction bois"
-  intro="Construction, rénovation et transformation de bâtiments en bois. Nous intervenons sur la structure, la toiture et l’enveloppe, avec une attention particulière aux détails et à la qualité d’exécution."
+  photoAlt="Toiture en cours de rénovation, avec isolation et pièces de bois sur le chantier"
   prestations={[
-    { titre: 'Construction', texte: 'Ossatures bois, charpentes, extensions, couverts, cabanons et terrasses.' },
-    { titre: 'Rénovation', texte: 'Toitures, charpentes existantes, isolation et fenêtres de toit.' },
-    { titre: 'Transformation', texte: 'Surélévations, modifications de structures et transformations de toiture.' },
     {
-      titre: 'Enveloppe',
-      texte: 'Isolation et étanchéité de toiture et de façade, bardages et revêtements intérieurs et extérieurs.',
+      titre: 'Ossature bois',
+      texte: 'Réalisation d’ossatures bois pour les constructions neuves, les extensions et les surélévations.',
+    },
+    {
+      titre: 'Charpente',
+      texte:
+        'Construction et rénovation de charpentes. Modification et renforcement des structures existantes, réalisation de couverts.',
+    },
+    {
+      titre: 'Toiture et isolation',
+      texte:
+        'Travaux d’isolation et d’étanchéité à l’air des toitures et des façades. Rénovation de toitures et pose de fenêtres de toit.',
+    },
+    {
+      titre: 'Revêtements et aménagements',
+      texte:
+        'Pose de bardages et de revêtements intérieurs. Aménagement de combles, réalisation de terrasses et d’ouvrages extérieurs en bois.',
     },
   ]}
   liens={[
-    { href: '/etude-bois/', label: 'Étude bois' },
-    { href: '/protection-incendie/', label: 'Protection incendie' },
+    { numero: 2, href: '/etude-bois/', label: 'Étude bois' },
+    { numero: 3, href: '/protection-incendie/', label: 'Protection incendie' },
   ]}
 />

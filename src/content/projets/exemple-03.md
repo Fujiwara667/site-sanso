@@ -1,7 +1,7 @@
 ---
-titre: 'Projet 03 : Exemple'
+titre: 'Exemple de présentation'
 categorie: 'Protection incendie'
-resume: 'Un format concis pour exposer le contexte du mandat et l’accompagnement apporté au projet.'
+resume: 'Les informations d’un mandat de protection incendie seront ajoutées ici.'
 image: '../../assets/projets/exemple-03.webp'
 alt: 'Illustration — Protection incendie'
 ordre: 3

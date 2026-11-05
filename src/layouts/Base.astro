@@ -10,7 +10,7 @@ interface Props {
   description?: string;
 }
 const { titre, description = entreprise.descriptionSite } = Astro.props;
-const titreComplet = `${titre} — ${entreprise.nom}`;
+const titreComplet = `${titre} — SANSO CONCEPT`;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 ---
 
@@ -23,7 +23,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <link rel="preload" href="/fonts/aptos-display.ttf" as="font" type="font/ttf" crossorigin />
+    <link rel="preload" href="/fonts/aptos-bold.ttf" as="font" type="font/ttf" crossorigin />
     <meta property="og:title" content={titreComplet} />
     <meta property="og:description" content={description} />
     <meta property="og:locale" content="fr_CH" />

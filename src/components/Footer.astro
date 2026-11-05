@@ -9,26 +9,27 @@ const annee = new Date().getFullYear();
 <footer>
   <div class="wrap">
     <div class="footer-top">
-      <a href="/" aria-label="Accueil">
-        <Image src={logo} alt="SANSO Concept" width={420} />
+      <a class="footer-logo" href="/" aria-label="Accueil">
+        <Image src={logo} alt="SANSO CONCEPT" width={420} loading="eager" />
       </a>
       <p>
         Étudier.
         <br />
         <span>Construire.</span>
       </p>
-      <a class="text-link" href="/contact/">
-        Faisons connaissance <span aria-hidden="true">↗</span>
-      </a>
+      <div class="footer-contact">
+        <a href={`mailto:${entreprise.email}`}>{entreprise.email}</a>
+        <a href={`tel:${entreprise.telephoneLien}`}>{entreprise.telephone}</a>
+      </div>
     </div>
     <div class="footer-bottom">
       <p>
-        {entreprise.nom.toUpperCase()} / {entreprise.npa} {entreprise.localite.toUpperCase()}
+        SANSO CONCEPT / {entreprise.npa} {entreprise.localite.toUpperCase()}
       </p>
       <div>
         <a href="/mentions-legales/">Mentions légales</a>
         <a href="/confidentialite/">Confidentialité</a>
-        <span>© {annee}</span>
+        <span>© {annee} SANSO CONCEPT</span>
       </div>
     </div>
   </div>

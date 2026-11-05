@@ -1,35 +1,39 @@
 ---
-// Page métier : Étude bois — modifier les textes ci-dessous
 import PageMetier from '../components/PageMetier.astro';
 import photo from '../assets/photos/etude-bois.png';
 ---
 
 <PageMetier
   titre="Étude bois"
-  surtitre="STRUCTURE / DIMENSIONNEMENT / EXÉCUTION"
-  verbe="Étudier."
-  accroche="Le projet se construit avant le chantier."
+  surtitre="EB / PRESTATIONS"
+  accroche="Nous étudions vos ouvrages en bois, de la faisabilité aux dimensionnements, aux appels d’offres et aux plans."
+  precision="Nous intervenons pour les architectes, les directions de travaux et les maîtres d’ouvrage. Les prestations sont définies selon le mandat."
   numero={2}
   photo={photo}
-  photoAlt="Illustration de notre savoir-faire : Étude bois"
-  intro="Étude et développement technique des projets de construction bois. Du principe constructif aux plans nécessaires à l’exécution, nous recherchons des solutions cohérentes avec l’architecture, le budget et les contraintes du terrain."
+  photoAlt="Extrait d’un descriptif de travaux pour des revêtements en bois"
+  typeVisuel="document"
   prestations={[
     {
-      titre: 'Avant-projet',
-      texte: 'Principes constructifs, variantes techniques, faisabilité et prédimensionnement.',
+      titre: 'Faisabilité et avant-projets',
+      texte: 'Analyse du projet, étude de variantes et prédimensionnement des ouvrages.',
     },
     {
-      titre: 'Dimensionnement',
-      texte: 'Calcul des éléments de structure bois et vérifications nécessaires au projet.',
+      titre: 'Conception et dimensionnement',
+      texte:
+        'Définition des principes constructifs, calcul des structures bois et dimensionnement des assemblages. Vérification des éléments existants.',
+    },
+    {
+      titre: 'Appels d’offres',
+      texte:
+        'Établissement des métrés et des descriptifs de travaux. Analyse des offres pour la préparation de l’adjudication.',
     },
     {
       titre: 'Plans et détails',
-      texte: 'Plans de structure, plans d’exécution, détails constructifs et coordination des interfaces.',
+      texte: 'Établissement des plans de structure, des plans d’exécution et des détails constructifs selon le mandat.',
     },
-    { titre: 'Appels d’offres', texte: 'Métrés, libellés de soumission, appui technique et comparaison des offres.' },
   ]}
   liens={[
-    { href: '/construction-bois/', label: 'Construction bois' },
-    { href: '/protection-incendie/', label: 'Protection incendie' },
+    { numero: 1, href: '/construction-bois/', label: 'Construction bois' },
+    { numero: 3, href: '/protection-incendie/', label: 'Protection incendie' },
   ]}
 />

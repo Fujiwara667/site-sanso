@@ -1,7 +1,7 @@
 ---
-titre: 'Projet 02 : Exemple'
+titre: 'Exemple de présentation'
 categorie: 'Étude bois'
-resume: 'Un espace pour présenter les enjeux constructifs, les solutions développées et le rôle de SANSO Concept.'
+resume: 'Les informations et les documents d’une étude seront ajoutés ici.'
 image: '../../assets/projets/exemple-02.webp'
 alt: 'Illustration — Étude bois'
 ordre: 2

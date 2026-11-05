@@ -1,0 +1,28 @@
+---
+import type { Projet } from '../data/projets';
+import DiaporamaProjet from './DiaporamaProjet.astro';
+interface Props {
+  projet: Projet;
+  niveauTitre?: 'h2' | 'h3';
+}
+const { projet, niveauTitre = 'h2' } = Astro.props;
+const Titre = niveauTitre;
+const titre = `${projet.numero} | ${projet.lieu.toLocaleUpperCase('fr-CH')}`;
+---
+
+<article class="project-record">
+  <div class="project-information">
+    <Titre>{titre}</Titre>
+    <dl>
+      <div>
+        <dt>DOMAINE</dt>
+        <dd class="project-domains">{projet.domaines.join(' / ')}</dd>
+      </div>
+      <div>
+        <dt>TRAVAUX RÉALISÉS</dt>
+        <dd class="project-works">{projet.travaux}</dd>
+      </div>
+    </dl>
+  </div>
+  <DiaporamaProjet images={projet.images} titre={titre} />
+</article>

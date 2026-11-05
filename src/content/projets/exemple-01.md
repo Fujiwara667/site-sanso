@@ -1,7 +1,7 @@
 ---
-titre: 'Projet 01 : Exemple'
+titre: 'Exemple de présentation'
 categorie: 'Construction bois'
-resume: 'Exemple de présentation d’une réalisation. Les informations et les photographies seront remplacées lors de la publication des projets.'
+resume: 'Les informations et les photographies d’une réalisation seront ajoutées ici.'
 image: '../../assets/projets/exemple-01.webp'
 alt: 'Illustration — Construction bois'
 ordre: 1
