@@ -22,6 +22,7 @@ const plusieurs = images.length > 1;
         class="gallery-slide"
         data-slide
         hidden={index !== 0}
+        aria-hidden={index !== 0}
         role="group"
         aria-roledescription="diapositive"
         aria-label={`${index + 1} sur ${images.length}`}

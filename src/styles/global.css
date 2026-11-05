@@ -1416,6 +1416,7 @@ select {
 .gallery-slide {
   position: absolute;
   inset: 0;
+  background: var(--cream);
 }
 .gallery-slide[hidden] {
   display: none;
@@ -1428,9 +1429,6 @@ select {
 .gallery-slide .gallery-document,
 .gallery-slide .gallery-contain {
   object-fit: contain;
-}
-.gallery-slide:not([hidden]) {
-  animation: gallery-reveal 180ms ease;
 }
 .gallery-controls {
   display: flex;
@@ -1467,14 +1465,6 @@ select {
   clip-path: inset(50%);
   white-space: nowrap;
   border: 0;
-}
-@keyframes gallery-reveal {
-  from {
-    opacity: 0.5;
-  }
-  to {
-    opacity: 1;
-  }
 }
 @media (max-width: 850px) {
   .project-record {
@@ -1544,11 +1534,6 @@ select {
   }
   .service-photo--signalisation {
     height: 160px;
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  .gallery-slide:not([hidden]) {
-    animation: none;
   }
 }
 
