@@ -401,8 +401,9 @@ a:hover .text-link,
   line-height: 1;
 }
 footer {
-  background: var(--coal);
-  color: var(--cream);
+  background: var(--cream);
+  color: var(--coal);
+  border-top: var(--rule);
   padding-block: var(--space-6) var(--space-3);
 }
 .footer-top {
@@ -428,7 +429,7 @@ footer {
   justify-self: start;
 }
 .footer-bottom {
-  border-top: 1px solid var(--cream);
+  border-top: var(--rule);
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -1318,8 +1319,6 @@ h3,
 }
 .footer-logo {
   display: block;
-  background: var(--cream);
-  padding: var(--space-2);
 }
 .footer-contact {
   display: flex;
