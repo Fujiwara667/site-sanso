@@ -1425,7 +1425,8 @@ select {
   height: 100%;
   object-fit: cover;
 }
-.gallery-slide .gallery-document {
+.gallery-slide .gallery-document,
+.gallery-slide .gallery-contain {
   object-fit: contain;
 }
 .gallery-slide:not([hidden]) {
