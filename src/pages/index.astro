@@ -3,6 +3,9 @@
 import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
 import Cta from '../components/Cta.astro';
+import ProjetReference from '../components/ProjetReference.astro';
+import { referencesPubliees } from '../data/projets';
+const [projetRecent] = referencesPubliees;
 import photoHero from '../assets/photos/accueil-chantier-leman.jpg';
 
 const codes = ['CB', 'EB', 'PI'];
@@ -112,10 +115,16 @@ const metiers = [
   </section>
 
   <section class="wrap home-projects">
-    <p class="eyebrow">03 / PROJETS</p>
-    <a class="text-link" href="/projets/">
-      Voir les projets <span aria-hidden="true">↗</span>
-    </a>
+    <div class="home-projects-heading">
+      <div>
+        <p class="eyebrow">03 / PROJETS</p>
+        {projetRecent && <h2>Projet récent</h2>}
+      </div>
+      <a class="text-link" href="/projets/">
+        Voir tous les projets <span aria-hidden="true">↗</span>
+      </a>
+    </div>
+    {projetRecent && <ProjetReference projet={projetRecent} niveauTitre="h3" />}
   </section>
   <Cta />
 </Base>

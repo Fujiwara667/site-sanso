@@ -3,14 +3,16 @@ import type { Projet } from '../data/projets';
 import DiaporamaProjet from './DiaporamaProjet.astro';
 interface Props {
   projet: Projet;
+  niveauTitre?: 'h2' | 'h3';
 }
-const { projet } = Astro.props;
+const { projet, niveauTitre = 'h2' } = Astro.props;
+const Titre = niveauTitre;
 const titre = `${projet.numero} | ${projet.lieu.toLocaleUpperCase('fr-CH')}`;
 ---
 
 <article class="project-record">
   <div class="project-information">
-    <h2>{titre}</h2>
+    <Titre>{titre}</Titre>
     <dl>
       <div>
         <dt>DOMAINE</dt>

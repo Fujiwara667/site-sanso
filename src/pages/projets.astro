@@ -1,8 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
-import { projets, projetComplet } from '../data/projets';
+import { referencesPubliees as references } from '../data/projets';
 import ProjetReference from '../components/ProjetReference.astro';
-const references = projets.filter(projetComplet);
 ---
 
 <Base

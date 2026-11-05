@@ -31,3 +31,6 @@ export function projetComplet(projet: Projet): boolean {
     projet.images.every((photo) => photo.src && photo.alt.trim()),
   );
 }
+
+/** Ordre éditorial : du plus récent au plus ancien, sans inventer de date. */
+export const referencesPubliees = projets.filter(projetComplet);

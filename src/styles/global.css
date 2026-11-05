@@ -1372,7 +1372,7 @@ select {
 .project-information {
   min-width: 0;
 }
-.project-information h2 {
+.project-information :is(h2, h3) {
   font-family: var(--font-tech);
   font-weight: 400;
   font-size: clamp(18px, 1.5vw, 22px);
@@ -1535,7 +1535,7 @@ select {
   .project-record {
     padding-block: var(--space-4);
   }
-  .project-information h2 {
+  .project-information :is(h2, h3) {
     font-size: 18px;
   }
   .project-information dl {
@@ -1555,4 +1555,26 @@ select {
   display: block;
   height: 100%;
   cursor: zoom-in;
+}
+
+/* Un projet récent sur l’accueil ; la liste complète reste sur /projets/. */
+.home-projects {
+  display: block;
+}
+.home-projects-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+.home-projects-heading h2 {
+  margin-top: var(--space-2);
+}
+.home-projects > .project-record {
+  margin-top: var(--space-4);
+}
+@media (max-width: 600px) {
+  .home-projects-heading {
+    flex-wrap: wrap;
+  }
 }
