@@ -12,7 +12,6 @@ import champPaquis01 from '../assets/projets/champ-paquis-01.jpg';
 import champPaquis02 from '../assets/projets/champ-paquis-02.jpg';
 import champPaquis03 from '../assets/projets/champ-paquis-03.jpg';
 import champPaquis04 from '../assets/projets/champ-paquis-04.jpg';
-import champPaquis05 from '../assets/projets/champ-paquis-05.jpg';
 
 export interface PhotoProjet {
   src: ImageMetadata;
@@ -100,11 +99,6 @@ export const projets: Projet[] = [
       {
         src: champPaquis04,
         alt: 'Vue intérieure des panneaux de l’agrandissement et de sa fenêtre.',
-        ajustement: 'contain',
-      },
-      {
-        src: champPaquis05,
-        alt: 'Vue de la surface en panneaux de bois durant le chantier d’agrandissement.',
         ajustement: 'contain',
       },
     ],
