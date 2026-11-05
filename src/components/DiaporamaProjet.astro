@@ -22,6 +22,7 @@ const plusieurs = images.length > 1;
         class="gallery-slide"
         data-slide
         hidden={index !== 0}
+        aria-hidden={index !== 0}
         role="group"
         aria-roledescription="diapositive"
         aria-label={`${index + 1} sur ${images.length}`}
@@ -33,7 +34,7 @@ const plusieurs = images.length > 1;
           sizes="(max-width: 850px) calc(100vw - 40px), 60vw"
           quality={80}
           loading={index === 0 ? 'eager' : 'lazy'}
-          class:list={[photo.document && 'gallery-document']}
+          class:list={[photo.document && 'gallery-document', photo.ajustement === 'contain' && 'gallery-contain']}
           style={{ objectPosition: photo.cadrage || '50% 50%' }}
         />
       </div>
