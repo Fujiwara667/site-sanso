@@ -1702,3 +1702,82 @@ select {
     padding: var(--space-3);
   }
 }
+
+/* Photos au format 3:2 ; cartouche et image partagent les mêmes bords. */
+.project-gallery {
+  position: relative;
+  display: grid;
+}
+.gallery-frame {
+  aspect-ratio: 3 / 2;
+  height: 100%;
+}
+.gallery-controls {
+  position: absolute;
+  inset: auto 12px 12px;
+  z-index: 5;
+  margin: 0;
+  justify-content: space-between;
+  pointer-events: none;
+}
+.gallery-controls > * {
+  background: var(--cream);
+  pointer-events: auto;
+}
+.gallery-counter {
+  padding: 10px 12px;
+}
+.gallery-zone {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50%;
+  z-index: 3;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  color: var(--coal);
+  cursor: none;
+}
+.gallery-zone--prev {
+  left: 0;
+}
+.gallery-zone--next {
+  right: 0;
+}
+.gallery-zone > span {
+  opacity: 0;
+  background: var(--cream);
+  padding: 12px;
+  font-size: 24px;
+}
+.gallery-zone:focus-visible {
+  outline-offset: -4px;
+}
+.gallery-zone:focus-visible > span {
+  opacity: 1;
+}
+.gallery-cursor {
+  position: absolute;
+  left: var(--cursor-x, 50%);
+  top: var(--cursor-y, 50%);
+  transform: translate(-50%, -50%);
+  z-index: 4;
+  pointer-events: none;
+  opacity: 0;
+  background: var(--cream);
+  color: var(--coal);
+  padding: 8px 12px;
+  font-size: 26px;
+  line-height: 1;
+}
+@media (hover: hover) and (pointer: fine) {
+  .gallery-frame.has-mouse .gallery-cursor {
+    opacity: 1;
+  }
+}
+@media (max-width: 850px) {
+  .gallery-frame {
+    height: auto;
+  }
+}

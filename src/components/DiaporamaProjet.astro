@@ -39,18 +39,35 @@ const plusieurs = images.length > 1;
         />
       </div>
     ))}
+    {plusieurs && (
+      <>
+        <button
+          class="gallery-zone gallery-zone--prev"
+          type="button"
+          data-prev
+          aria-label={`Photo précédente — ${titre}`}
+        >
+          <span aria-hidden="true">←</span>
+        </button>
+        <button
+          class="gallery-zone gallery-zone--next"
+          type="button"
+          data-next
+          aria-label={`Photo suivante — ${titre}`}
+        >
+          <span aria-hidden="true">→</span>
+        </button>
+        <span class="gallery-cursor" data-gallery-cursor aria-hidden="true">
+          →
+        </span>
+      </>
+    )}
   </div>
   {plusieurs && (
     <div class="gallery-controls">
-      <button type="button" data-prev aria-label={`Photo précédente — ${titre}`}>
-        <span aria-hidden="true">←</span>
-      </button>
       <span class="gallery-counter" data-counter aria-live="off">
         01 / {String(images.length).padStart(2, '0')}
       </span>
-      <button type="button" data-next aria-label={`Photo suivante — ${titre}`}>
-        <span aria-hidden="true">→</span>
-      </button>
       <button type="button" data-pause aria-pressed="false" aria-label={`Mettre en pause le diaporama — ${titre}`}>
         Pause
       </button>
