@@ -1680,10 +1680,6 @@ select {
 .company-direction > p:last-child {
   line-height: 1.6;
 }
-.approach .company-signature {
-  grid-column: 1 / -1;
-  margin: 0;
-}
 @media (max-width: 850px) {
   .company-grid {
     column-gap: var(--space-4);
