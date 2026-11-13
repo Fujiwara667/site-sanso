@@ -1631,11 +1631,6 @@ select {
     margin-top: var(--space-2);
   }
 }
-.hero-document-link {
-  grid-column: 1 / -1;
-  justify-self: start;
-  margin-top: var(--space-3);
-}
 .home-hero .text-link,
 .service-hero .text-link {
   border-bottom-color: currentColor;

@@ -30,11 +30,6 @@ const code = codes[p.numero - 1];
       <div class="service-heading">
         <h1>{p.titre}</h1>
         <p class="introduction">{p.accroche}</p>
-        {p.typeVisuel === 'document' && (
-          <a class="text-link hero-document-link" href={p.photo.src} target="_blank" rel="noopener noreferrer">
-            Voir l’image entière <span aria-hidden="true">↗</span>
-          </a>
-        )}
       </div>
     </div>
     <div class:list={['service-photo', 'wrap', p.typeVisuel && `service-photo--${p.typeVisuel}`]}>
