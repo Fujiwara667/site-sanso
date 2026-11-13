@@ -8,7 +8,6 @@ export function initialiserDiaporamas() {
     const precedent = galerie.querySelector<HTMLButtonElement>('[data-prev]')!;
     const suivant = galerie.querySelector<HTMLButtonElement>('[data-next]')!;
     const pause = galerie.querySelector<HTMLButtonElement>('[data-pause]')!;
-    const compteur = galerie.querySelector<HTMLElement>('[data-counter]')!;
     const statut = galerie.querySelector<HTMLElement>('[data-gallery-status]')!;
     const cadre = galerie.querySelector<HTMLElement>('[data-gallery-frame]')!;
     const curseur = galerie.querySelector<HTMLElement>('[data-gallery-cursor]')!;
@@ -94,7 +93,6 @@ export function initialiserDiaporamas() {
         sortante.style.zIndex = '1';
         entrante.style.zIndex = '2';
         index = cible;
-        compteur.textContent = `${String(index + 1).padStart(2, '0')} / ${String(slides.length).padStart(2, '0')}`;
         if (manuel) statut.textContent = `Photo ${index + 1} sur ${slides.length}`;
         if (!mouvementReduit.matches) {
           const options: KeyframeAnimationOptions = {

@@ -1781,3 +1781,19 @@ select {
     height: auto;
   }
 }
+/* La pause reste accessible au clavier, sans commande visible sur les photos. */
+.gallery-accessible-controls:focus-within {
+  inset: auto 12px 12px auto;
+  width: auto;
+  height: auto;
+  margin: 0;
+  clip-path: none;
+  overflow: visible;
+  z-index: 5;
+}
+.gallery-accessible-controls button {
+  min-height: 44px;
+  padding: 8px 12px;
+  background: var(--cream);
+  color: var(--coal);
+}
