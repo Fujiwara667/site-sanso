@@ -1635,3 +1635,66 @@ select {
 .service-hero .text-link {
   border-bottom-color: currentColor;
 }
+
+/* Entreprise : présentation éditoriale et direction sur une grille commune. */
+.company-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+  column-gap: var(--space-5);
+  row-gap: var(--space-5);
+}
+.company-heading h2 {
+  margin-top: var(--space-3);
+  font-family: var(--font-text);
+  font-size: clamp(32px, 3.5vw, 48px);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+}
+.company-presentation {
+  font-family: var(--font-text);
+  font-size: var(--intro-size);
+  line-height: 1.65;
+}
+.approach .company-presentation p + p {
+  margin-top: var(--space-4);
+}
+.company-direction {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: minmax(0, 20fr) minmax(0, 35fr) minmax(0, 45fr);
+  gap: var(--space-3);
+  align-items: center;
+  padding: var(--space-4);
+  background: var(--peach);
+}
+.approach .company-direction .eyebrow {
+  margin: 0;
+}
+.company-direction h3 {
+  font-family: var(--font-text);
+  font-size: clamp(21px, 2vw, 26px);
+  font-weight: 600;
+  line-height: 1.25;
+}
+.company-direction > p:last-child {
+  line-height: 1.6;
+}
+@media (max-width: 850px) {
+  .company-grid {
+    column-gap: var(--space-4);
+  }
+  .company-direction {
+    grid-template-columns: 1fr;
+    gap: var(--space-2);
+  }
+}
+@media (max-width: 600px) {
+  .company-grid {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: var(--space-4);
+  }
+  .company-direction {
+    padding: var(--space-3);
+  }
+}
