@@ -1263,17 +1263,9 @@ h3,
   border-block: var(--rule);
   background: var(--cream);
 }
-.service-photo--document {
-  width: 100%;
-  height: auto;
-}
-.service-photo--document img {
-  height: auto;
-}
 .service-photo--signalisation {
   height: 220px;
 }
-.service-photo--document img,
 .service-photo--signalisation img {
   object-fit: contain;
   object-position: center;
