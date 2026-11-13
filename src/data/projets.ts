@@ -37,11 +37,11 @@ export const projets: Projet[] = [
   {
     numero: '26-28',
     nom: 'Villa Bellevue',
-    titreTravaux: 'Rénovation énergétique et réfection de la toiture',
+    titreTravaux: 'Réfection de toiture',
     lieu: 'Epesses / VD',
     domaines: ['CB'],
     travaux:
-      'Démontage de la couverture existante, isolation et étanchéité de la toiture. Mise en œuvre de la sous-couverture et du lattage.',
+      'Dépose de la couverture existante et réfection complète des couches de toiture : pare-vapeur, isolation, sous-couverture, contre-lattage et lattage. Réalisation des bords de toit, comprenant les larmiers et les virevents.',
     images: [
       { src: bellevue01, alt: 'Vue d’ensemble de la toiture avec sous-couverture et lattage en cours de réalisation.' },
       { src: bellevue02, alt: 'Toiture en chantier avec membrane et échafaudage.' },
@@ -55,7 +55,8 @@ export const projets: Projet[] = [
     titreTravaux: 'Pergola',
     lieu: 'Brent / VD',
     domaines: ['CB'],
-    travaux: 'Construction d’une pergola en mélèze d’inspiration japonaise, avec traitement de surface.',
+    travaux:
+      'Fabrication, taille et pose d’une pergola en mélèze d’inspiration japonaise. Application d’un traitement de surface pour la finition et la protection du bois.',
     images: [
       { src: mmap01, alt: 'Vue des poutres en mélèze de la pergola au-dessus de la terrasse.' },
       { src: mmap02, alt: 'Pergola en mélèze d’inspiration japonaise adossée à la maison.' },
@@ -64,11 +65,11 @@ export const projets: Projet[] = [
   },
   {
     numero: '26-03',
-    nom: 'Champs-Pâquis',
-    titreTravaux: 'Agrandissement',
+    nom: 'Champ-Paquis',
+    titreTravaux: 'Extension en ossature bois',
     lieu: 'Chexbres / VD',
     domaines: ['CB'],
-    travaux: 'Construction d’un agrandissement de garage en ossature bois, avec revêtement extérieur en zinc.',
+    travaux: 'Fabrication et pose d’une structure à ossature bois destinée à l’agrandissement d’un garage existant.',
     images: [
       { src: champPaquis01, alt: 'Pose des panneaux et de l’isolation sur l’ossature bois de l’agrandissement.' },
       { src: champPaquis02, alt: 'Montage des parois en panneaux de bois du garage.' },
