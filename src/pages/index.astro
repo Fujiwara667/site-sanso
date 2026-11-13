@@ -6,7 +6,7 @@ import Cta from '../components/Cta.astro';
 import ProjetReference from '../components/ProjetReference.astro';
 import { referencesPubliees } from '../data/projets';
 const [projetRecent] = referencesPubliees;
-import photoHero from '../assets/photos/hero-accueil.webp';
+import photoHero from '../assets/photos/hero-accueil-actualise.jpg';
 
 const codes = ['CB', 'EB', 'PI'];
 const metiers = [
@@ -51,10 +51,10 @@ const metiers = [
         </a>
       </div>
     </div>
-    <div class="hero-photo">
+    <div class="hero-photo wrap">
       <Image
         src={photoHero}
-        alt="Lames de bois alignées sur un mur et un plafond, séparées par des joints noirs"
+        alt="Revêtement en lames de bois séparées par des joints noirs, en noir et blanc"
         widths={[800, 1400, 1920]}
         quality={70}
         sizes="100vw"

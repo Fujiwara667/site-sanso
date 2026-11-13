@@ -32,7 +32,7 @@ const code = codes[p.numero - 1];
         <p class="introduction">{p.accroche}</p>
       </div>
     </div>
-    <div class:list={['service-photo', p.typeVisuel && `service-photo--${p.typeVisuel}`]}>
+    <div class:list={['service-photo', 'wrap', p.typeVisuel && `service-photo--${p.typeVisuel}`]}>
       {p.typeVisuel === 'document' ? (
         <a
           class="document-viewer"
