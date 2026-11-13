@@ -31,7 +31,7 @@ const plusieurs = images.length > 1;
           src={photo.src}
           alt={photo.alt}
           widths={[480, 800, 1200, 1600]}
-          sizes="(max-width: 850px) calc(100vw - 40px), 60vw"
+          sizes="(max-width: 850px) calc(100vw - 40px), 67vw"
           quality={80}
           loading={index === 0 ? 'eager' : 'lazy'}
           class:list={[photo.document && 'gallery-document', photo.ajustement === 'contain' && 'gallery-contain']}

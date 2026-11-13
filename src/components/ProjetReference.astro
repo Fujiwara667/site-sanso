@@ -7,22 +7,20 @@ interface Props {
 }
 const { projet, niveauTitre = 'h2' } = Astro.props;
 const Titre = niveauTitre;
-const titre = `${projet.numero} | ${projet.lieu.toLocaleUpperCase('fr-CH')}`;
+const titre = `${projet.numero} / ${projet.nom}`;
+const SousTitre = niveauTitre === 'h2' ? 'h3' : 'h4';
+const domaines = { CB: 'Construction bois', EB: 'Étude bois', PI: 'Protection incendie' };
 ---
 
 <article class="project-record">
   <div class="project-information">
-    <Titre>{titre}</Titre>
-    <dl>
-      <div>
-        <dt>DOMAINE</dt>
-        <dd class="project-domains">{projet.domaines.join(' / ')}</dd>
-      </div>
-      <div>
-        <dt>TRAVAUX RÉALISÉS</dt>
-        <dd class="project-works">{projet.travaux}</dd>
-      </div>
-    </dl>
+    <header class="project-identity">
+      <Titre class="project-name">{titre}</Titre>
+      <p class="project-location">{projet.lieu}</p>
+    </header>
+    <p class="project-domains">{projet.domaines.map((code) => domaines[code]).join(' / ')}</p>
+    <SousTitre class="project-work-title">{projet.titreTravaux}</SousTitre>
+    <p class="project-works">{projet.travaux}</p>
   </div>
   <DiaporamaProjet images={projet.images} titre={titre} />
 </article>

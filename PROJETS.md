@@ -9,6 +9,8 @@ L’accueil et la page `/projets/` lisent uniquement **`src/data/projets.ts`**. 
 | Champ                 | Contenu                                                              |
 | --------------------- | -------------------------------------------------------------------- |
 | `numero`              | Numéro réel de projet ; aucune numérotation automatique              |
+| `nom`                 | Nom confirmé du projet                                               |
+| `titreTravaux`        | Titre court de l’intervention (rénovation, pergola, agrandissement…) |
 | `lieu`                | Lieu confirmé                                                        |
 | `domaines`            | Un ou plusieurs codes, par exemple `['CB', 'EB']`                    |
 | `travaux`             | Description factuelle des travaux confiés                            |

@@ -26,6 +26,8 @@ export interface PhotoProjet {
 
 export interface Projet {
   numero: string;
+  nom: string;
+  titreTravaux: string;
   lieu: string;
   domaines: ('CB' | 'EB' | 'PI')[];
   travaux: string;
@@ -36,6 +38,8 @@ export interface Projet {
 export const projets: Projet[] = [
   {
     numero: '26-28',
+    nom: 'Villa Bellevue',
+    titreTravaux: 'Rénovation',
     lieu: 'Epesses',
     domaines: ['CB'],
     travaux: 'Rénovation énergétique et réfection de la toiture.',
@@ -52,6 +56,8 @@ export const projets: Projet[] = [
   },
   {
     numero: '26-18',
+    nom: 'MMAP',
+    titreTravaux: 'Pergola',
     lieu: 'Brent',
     domaines: ['CB'],
     travaux: 'Construction d’une pergola.',
@@ -77,6 +83,8 @@ export const projets: Projet[] = [
   },
   {
     numero: '26-03',
+    nom: 'Champ-Paquis',
+    titreTravaux: 'Agrandissement',
     lieu: 'Chexbres',
     domaines: ['CB'],
     travaux: 'Agrandissement d’un garage en ossature bois.',
@@ -109,6 +117,8 @@ export const projets: Projet[] = [
 export function projetComplet(projet: Projet): boolean {
   return Boolean(
     projet.numero.trim() &&
+    projet.nom.trim() &&
+    projet.titreTravaux.trim() &&
     projet.lieu.trim() &&
     projet.domaines.length &&
     projet.travaux.trim() &&
