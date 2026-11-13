@@ -8,9 +8,20 @@ export function initialiserDiaporamas() {
     const precedent = galerie.querySelector<HTMLButtonElement>('[data-prev]')!;
     const suivant = galerie.querySelector<HTMLButtonElement>('[data-next]')!;
     const pause = galerie.querySelector<HTMLButtonElement>('[data-pause]')!;
-    const compteur = galerie.querySelector<HTMLElement>('[data-counter]')!;
     const statut = galerie.querySelector<HTMLElement>('[data-gallery-status]')!;
     const cadre = galerie.querySelector<HTMLElement>('[data-gallery-frame]')!;
+    const curseur = galerie.querySelector<HTMLElement>('[data-gallery-cursor]')!;
+    let ignorerClicAvant = 0;
+    cadre.addEventListener('pointermove', (event) => {
+      if (event.pointerType !== 'mouse') return;
+      const rect = cadre.getBoundingClientRect();
+      const x = event.clientX - rect.left;
+      curseur.textContent = x < rect.width / 2 ? '←' : '→';
+      cadre.style.setProperty('--cursor-x', `${x}px`);
+      cadre.style.setProperty('--cursor-y', `${event.clientY - rect.top}px`);
+      cadre.classList.add('has-mouse');
+    });
+    cadre.addEventListener('pointerleave', () => cadre.classList.remove('has-mouse'));
     const mouvementReduit = window.matchMedia('(prefers-reduced-motion: reduce)');
     let index = 0;
     let enTransition = false;
@@ -82,7 +93,6 @@ export function initialiserDiaporamas() {
         sortante.style.zIndex = '1';
         entrante.style.zIndex = '2';
         index = cible;
-        compteur.textContent = `${String(index + 1).padStart(2, '0')} / ${String(slides.length).padStart(2, '0')}`;
         if (manuel) statut.textContent = `Photo ${index + 1} sur ${slides.length}`;
         if (!mouvementReduit.matches) {
           const options: KeyframeAnimationOptions = {
@@ -123,9 +133,11 @@ export function initialiserDiaporamas() {
       }
     }
     precedent.addEventListener('click', () => {
+      if (performance.now() < ignorerClicAvant) return;
       void afficher(index - 1, true, -1);
     });
     suivant.addEventListener('click', () => {
+      if (performance.now() < ignorerClicAvant) return;
       void afficher(index + 1, true, 1);
     });
     pause.addEventListener('click', () => {
@@ -163,6 +175,7 @@ export function initialiserDiaporamas() {
       const dy = event.clientY - depart.y;
       depart = undefined;
       if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy) * 1.3) {
+        ignorerClicAvant = performance.now() + 500;
         const direction = dx < 0 ? 1 : -1;
         void afficher(index + direction, true, direction);
       }

@@ -1358,45 +1358,55 @@ select {
 }
 .project-record {
   display: grid;
-  grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
-  gap: clamp(48px, 4.4vw, 64px);
-  align-items: start;
-  border-top: var(--rule);
-  padding-block: var(--space-5);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  gap: 0;
+  align-items: stretch;
+  margin-top: var(--space-4);
 }
 .project-information {
   min-width: 0;
-}
-.project-information :is(h2, h3) {
+  padding: clamp(24px, 2.5vw, 40px);
+  background: var(--peach);
   font-family: var(--font-tech);
-  font-weight: 400;
-  font-size: clamp(18px, 1.5vw, 22px);
+}
+.project-information .project-name {
+  font-family: var(--font-tech);
+  font-weight: 700;
+  font-size: clamp(16px, 1.4vw, 20px);
   line-height: 1.4;
-  letter-spacing: 0.01em;
-  text-transform: none;
+  letter-spacing: 0;
+  text-transform: uppercase;
   overflow-wrap: anywhere;
 }
-.project-information dl {
-  margin: var(--space-4) 0 0;
+.project-identity {
+  padding-bottom: var(--space-3);
+  border-bottom: var(--rule);
 }
-.project-information dl > div + div {
-  margin-top: var(--space-4);
-}
-.project-information dt {
-  font-size: var(--label-size);
-  line-height: 1.4;
-  letter-spacing: 0.04em;
-  margin-bottom: var(--space-1);
-}
-.project-information dd {
-  margin: 0;
+.project-location {
+  margin-top: var(--space-3);
+  text-transform: uppercase;
+  font-size: clamp(15px, 1.3vw, 18px);
 }
 .project-domains {
-  font-size: 14px;
+  margin-top: var(--space-4);
+  font-size: clamp(13px, 1.1vw, 16px);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.project-information .project-work-title {
+  margin-top: var(--space-5);
+  font-family: var(--font-tech);
+  font-size: clamp(18px, 1.5vw, 21px);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  overflow-wrap: anywhere;
 }
 .project-works {
-  font-size: clamp(18px, 1.5vw, 20px);
-  line-height: 1.5;
+  margin-top: var(--space-3);
+  font-size: clamp(16px, 1.3vw, 18px);
+  line-height: 1.6;
 }
 .project-gallery {
   min-width: 0;
@@ -1464,7 +1474,7 @@ select {
 @media (max-width: 850px) {
   .project-record {
     grid-template-columns: 1fr;
-    gap: var(--space-4);
+    gap: 0;
   }
   .footer-top {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1518,14 +1528,8 @@ select {
   .footer-top > .footer-logo {
     max-width: 100%;
   }
-  .project-record {
-    padding-block: var(--space-4);
-  }
-  .project-information :is(h2, h3) {
-    font-size: 18px;
-  }
-  .project-information dl {
-    margin-top: var(--space-3);
+  .project-information .project-work-title {
+    margin-top: var(--space-4);
   }
   .service-photo--signalisation {
     height: 160px;
@@ -1697,4 +1701,99 @@ select {
   .company-direction {
     padding: var(--space-3);
   }
+}
+
+/* Photos au format 3:2 ; cartouche et image partagent les mêmes bords. */
+.project-gallery {
+  position: relative;
+  display: grid;
+}
+.gallery-frame {
+  aspect-ratio: 3 / 2;
+  height: 100%;
+}
+.gallery-controls {
+  position: absolute;
+  inset: auto 12px 12px;
+  z-index: 5;
+  margin: 0;
+  justify-content: space-between;
+  pointer-events: none;
+}
+.gallery-controls > * {
+  background: var(--cream);
+  pointer-events: auto;
+}
+.gallery-counter {
+  padding: 10px 12px;
+}
+.gallery-zone {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50%;
+  z-index: 3;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  color: var(--coal);
+  cursor: none;
+}
+.gallery-zone--prev {
+  left: 0;
+}
+.gallery-zone--next {
+  right: 0;
+}
+.gallery-zone > span {
+  opacity: 0;
+  background: var(--cream);
+  padding: 12px;
+  font-size: 24px;
+}
+.gallery-zone:focus-visible {
+  outline-offset: -4px;
+}
+.gallery-zone:focus-visible > span {
+  opacity: 1;
+}
+.gallery-cursor {
+  position: absolute;
+  left: var(--cursor-x, 50%);
+  top: var(--cursor-y, 50%);
+  transform: translate(-50%, -50%);
+  z-index: 4;
+  pointer-events: none;
+  opacity: 0;
+  background: var(--cream);
+  color: var(--coal);
+  padding: 8px 12px;
+  font-size: 26px;
+  line-height: 1;
+}
+@media (hover: hover) and (pointer: fine) {
+  .gallery-frame.has-mouse .gallery-cursor {
+    opacity: 1;
+  }
+}
+@media (max-width: 850px) {
+  .gallery-frame {
+    height: auto;
+  }
+}
+/* La pause reste accessible au clavier, sans commande visible sur les photos. */
+.gallery-accessible-controls:focus-within {
+  inset: auto 12px 12px auto;
+  width: auto;
+  height: auto;
+  margin: 0;
+  clip-path: none;
+  overflow: visible;
+  z-index: 5;
+}
+.gallery-accessible-controls button {
+  min-height: 44px;
+  padding: 8px 12px;
+  background: var(--cream);
+  color: var(--coal);
 }
