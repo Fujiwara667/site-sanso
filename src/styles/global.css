@@ -1256,7 +1256,6 @@ h3,
 .project-domains {
   font-family: var(--font-tech);
 }
-.service-photo--document,
 .service-photo--signalisation {
   width: calc(100% - 2 * var(--margin));
   max-width: var(--content-width);
@@ -1265,7 +1264,11 @@ h3,
   background: var(--cream);
 }
 .service-photo--document {
-  height: clamp(320px, 38vw, 520px);
+  width: 100%;
+  height: auto;
+}
+.service-photo--document img {
+  height: auto;
 }
 .service-photo--signalisation {
   height: 220px;
