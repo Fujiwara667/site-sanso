@@ -1797,3 +1797,63 @@ select {
   background: var(--cream);
   color: var(--coal);
 }
+
+/* Construction bois : réserver les deux tiers supérieurs à la photo. */
+.service-hero--lower-third {
+  min-height: clamp(660px, 55vw, 780px);
+}
+.service-hero--lower-third > .service-hero-title {
+  position: absolute;
+  inset: auto 0 0;
+  min-height: 0;
+  padding: 20px 32px 28px;
+  gap: 12px;
+}
+.service-hero--lower-third .service-heading {
+  grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+  gap: 32px;
+  padding: 0;
+  align-items: end;
+}
+.service-hero--lower-third .service-heading h1,
+.service-hero--lower-third .service-heading p {
+  grid-column: auto;
+  margin: 0;
+}
+.service-hero--lower-third .service-heading h1 {
+  font-size: clamp(36px, 3.5vw, 48px);
+}
+.service-hero--lower-third .introduction {
+  font-size: 17px;
+  line-height: 1.5;
+}
+.service-hero--lower-third .service-hero-title > .eyebrow {
+  margin: 0;
+  padding-bottom: 8px;
+}
+.service-mobile-introduction {
+  display: none;
+}
+@media (max-width: 850px) {
+  .service-hero--lower-third {
+    min-height: 540px;
+  }
+  .service-hero--lower-third > .service-hero-title {
+    padding: 20px 24px 28px;
+  }
+  .service-hero--lower-third .service-heading {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .service-hero--lower-third .introduction {
+    display: none;
+  }
+  .service-hero--lower-third .service-heading h1 {
+    font-size: clamp(30px, 6vw, 40px);
+  }
+  .service-mobile-introduction {
+    display: block;
+    margin-top: var(--space-4);
+    font-size: var(--intro-size);
+    line-height: 1.6;
+  }
+}

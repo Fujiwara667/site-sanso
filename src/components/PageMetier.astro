@@ -15,6 +15,7 @@ interface Props {
   photoAlt: string;
   typeVisuel?: 'document' | 'signalisation';
   precision?: string;
+  texteEnBas?: boolean;
   prestations: { titre: string; texte: string }[];
   liens: { href: string; label: string; numero: number }[]; // liens vers les 2 autres métiers
 }
@@ -24,7 +25,7 @@ const code = codes[p.numero - 1];
 ---
 
 <Base titre={p.titre} description={p.accroche}>
-  <section class="service-hero">
+  <section class:list={['service-hero', p.texteEnBas && 'service-hero--lower-third']}>
     <div class="wrap service-hero-title">
       <p class="eyebrow">{p.surtitre}</p>
       <div class="service-heading">
@@ -48,6 +49,8 @@ const code = codes[p.numero - 1];
       )}
     </div>
   </section>
+
+  {p.texteEnBas && <p class="wrap service-mobile-introduction">{p.accroche}</p>}
 
   <section>
     <div class="wrap prestations">
