@@ -34,19 +34,14 @@ const code = codes[p.numero - 1];
       </div>
     </div>
     <div class:list={['service-photo', 'wrap', p.typeVisuel && `service-photo--${p.typeVisuel}`]}>
-      {p.typeVisuel === 'document' ? (
-        <a
-          class="document-viewer"
-          href={p.photo.src}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Ouvrir le document en pleine résolution"
-        >
-          <Image src={p.photo} alt={p.photoAlt} widths={[800, 1400, 1920]} quality={85} sizes="100vw" loading="eager" />
-        </a>
-      ) : (
-        <Image src={p.photo} alt={p.photoAlt} widths={[800, 1400, 1920]} quality={70} sizes="100vw" loading="eager" />
-      )}
+      <Image
+        src={p.photo}
+        alt={p.photoAlt}
+        widths={[800, 1400, 1920]}
+        quality={p.typeVisuel === 'document' ? 85 : 70}
+        sizes="100vw"
+        loading="eager"
+      />
     </div>
   </section>
 
