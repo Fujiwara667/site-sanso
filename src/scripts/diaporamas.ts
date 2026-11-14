@@ -10,18 +10,7 @@ export function initialiserDiaporamas() {
     const pause = galerie.querySelector<HTMLButtonElement>('[data-pause]')!;
     const statut = galerie.querySelector<HTMLElement>('[data-gallery-status]')!;
     const cadre = galerie.querySelector<HTMLElement>('[data-gallery-frame]')!;
-    const curseur = galerie.querySelector<HTMLElement>('[data-gallery-cursor]')!;
     let ignorerClicAvant = 0;
-    cadre.addEventListener('pointermove', (event) => {
-      if (event.pointerType !== 'mouse') return;
-      const rect = cadre.getBoundingClientRect();
-      const x = event.clientX - rect.left;
-      curseur.textContent = x < rect.width / 2 ? '←' : '→';
-      cadre.style.setProperty('--cursor-x', `${x}px`);
-      cadre.style.setProperty('--cursor-y', `${event.clientY - rect.top}px`);
-      cadre.classList.add('has-mouse');
-    });
-    cadre.addEventListener('pointerleave', () => cadre.classList.remove('has-mouse'));
     const mouvementReduit = window.matchMedia('(prefers-reduced-motion: reduce)');
     let index = 0;
     let enTransition = false;
@@ -55,7 +44,7 @@ export function initialiserDiaporamas() {
       }, delai);
     }
     function programmer() {
-      programmerDans(2250);
+      programmerDans(3500);
     }
     async function preparerImage(numero: number) {
       const image = slides[(numero + slides.length) % slides.length].querySelector<HTMLImageElement>('img');
@@ -128,7 +117,7 @@ export function initialiserDiaporamas() {
         enAttente = undefined;
         if (suivante) void afficher(suivante.prochain, suivante.manuel, suivante.direction);
         else if (!manuel && debutTransition !== undefined)
-          programmerDans(Math.max(0, 2250 - (performance.now() - debutTransition)));
+          programmerDans(Math.max(0, 3500 - (performance.now() - debutTransition)));
         else programmer();
       }
     }
